@@ -1,0 +1,4130 @@
+/* =========================================================
+   AI WORKFORCE MANAGEMENT SYSTEM
+   MANAGER PORTAL
+   CONSOLIDATED PROFESSIONAL DARK THEME
+   ========================================================= */
+
+
+/* =========================================================
+   1. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+
+    /* ---------- Primary ---------- */
+
+    --primary: #6246ea;
+    --primary-dark: #5138d4;
+    --primary-light: #7c5cff;
+
+    --primary-bg: rgba(98, 70, 234, 0.12);
+    --primary-border: rgba(124, 92, 255, 0.25);
+    --primary-glow: rgba(98, 70, 234, 0.25);
+
+
+    /* ---------- Backgrounds ---------- */
+
+    --dark-bg: #080b18;
+    --dark-bg-secondary: #0b0f21;
+
+    --sidebar-bg: #0b0f21;
+    --sidebar-bottom: #0a0e1c;
+
+    --topbar-bg: #090d1b;
+
+    --card-bg: #101426;
+    --card-bg-secondary: #111629;
+    --card-hover: #151a30;
+
+    --input-bg: #0d1222;
+
+
+    /* ---------- Borders ---------- */
+
+    --border: #20263a;
+    --border-light: #292f45;
+    --border-primary: rgba(124, 92, 255, 0.35);
+
+
+    /* ---------- Text ---------- */
+
+    --text-main: #f8fafc;
+    --text-primary: #f8fafc;
+
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+
+    --text-soft: #cbd5e1;
+
+
+    /* ---------- Semantic Colors ---------- */
+
+    --success: #34d399;
+    --success-bg: rgba(16, 185, 129, 0.15);
+    --success-border: rgba(52, 211, 153, 0.20);
+
+    --warning: #fbbf24;
+    --warning-bg: rgba(245, 158, 11, 0.15);
+    --warning-border: rgba(251, 191, 36, 0.20);
+
+    --danger: #fb7185;
+    --danger-bg: rgba(251, 113, 133, 0.15);
+    --danger-border: rgba(251, 113, 133, 0.20);
+
+    --info: #60a5fa;
+    --info-bg: rgba(59, 130, 246, 0.15);
+    --info-border: rgba(96, 165, 250, 0.20);
+
+
+    /* ---------- Purple ---------- */
+
+    --purple: #a78bfa;
+    --purple-bg: rgba(139, 92, 246, 0.16);
+
+
+    /* ---------- Layout ---------- */
+
+    --sidebar-width: 220px;
+    --sidebar-collapsed-width: 80px;
+
+    --topbar-height: 66px;
+
+    --content-padding: 30px;
+
+
+    /* ---------- Radius ---------- */
+
+    --radius-sm: 9px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 20px;
+
+
+    /* ---------- Shadows ---------- */
+
+    --shadow:
+        0 10px 30px rgba(0, 0, 0, 0.20);
+
+    --shadow-hover:
+        0 15px 35px rgba(0, 0, 0, 0.30);
+
+    --shadow-primary:
+        0 10px 30px rgba(98, 70, 234, 0.18);
+
+    --shadow-primary-hover:
+        0 15px 35px rgba(98, 70, 234, 0.25);
+
+
+    /* ---------- Transition ---------- */
+
+    --transition:
+        all 0.25s ease;
+}
+
+
+/* =========================================================
+   2. RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    min-height: 100vh;
+
+    background: var(--dark-bg);
+    color: var(--text-main);
+
+    font-family:
+        "Segoe UI",
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   3. SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: var(--sidebar-width);
+    height: 100vh;
+
+    padding: 20px 13px;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--sidebar-bg) 0%,
+            var(--sidebar-bottom) 100%
+        );
+
+    color: var(--text-main);
+
+    border-right: 1px solid var(--border);
+
+    z-index: 2000;
+
+    overflow-y: auto;
+
+    box-shadow:
+        3px 0 18px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =========================================================
+   4. BRAND
+   ========================================================= */
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 7px 10px 20px;
+
+    margin-bottom: 18px;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: var(--radius-md);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        );
+
+    color: #ffffff;
+
+    font-size: 20px;
+
+    box-shadow:
+        0 6px 20px rgba(98, 70, 234, 0.25);
+}
+
+.brand-text h5 {
+    margin: 0;
+
+    color: var(--text-main);
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.brand-text small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   5. SIDEBAR NAVIGATION
+   ========================================================= */
+
+.nav-link-custom {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    padding: 11px 12px;
+
+    margin-bottom: 5px;
+
+    border-radius: 10px;
+
+    color: var(--text-secondary);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: var(--transition);
+}
+
+.nav-link-custom i {
+    width: 22px;
+    min-width: 22px;
+
+    text-align: center;
+
+    font-size: 16px;
+}
+
+.nav-link-custom:hover {
+    background:
+        rgba(98, 70, 234, 0.12);
+
+    color: #ffffff;
+}
+
+.nav-link-custom.active {
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            #7048f5
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 8px 25px rgba(98, 70, 234, 0.30);
+}
+
+.nav-link-custom.active i {
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   6. MAIN AREA
+   ========================================================= */
+
+.main {
+    width:
+        calc(100% - var(--sidebar-width));
+
+    min-height: 100vh;
+
+    margin-left: var(--sidebar-width);
+
+    background: var(--dark-bg);
+}
+
+
+/* =========================================================
+   7. TOPBAR
+   ========================================================= */
+
+.topbar {
+    position: sticky;
+
+    top: 0;
+
+    height: var(--topbar-height);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+    background: var(--topbar-bg);
+
+    border-bottom:
+        1px solid var(--border);
+
+    z-index: 1500;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.portal-title {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    color: var(--text-main);
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.portal-title i {
+    color: var(--info);
+}
+
+.user-area {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.user-area strong {
+    color: var(--text-main);
+
+    font-size: 13px;
+}
+
+.user-area small,
+.user-area div div {
+    color: var(--text-secondary);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   8. AVATAR
+   ========================================================= */
+
+.avatar {
+    width: 40px;
+    height: 40px;
+
+    min-width: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        );
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 6px 20px rgba(98, 70, 234, 0.30);
+}
+
+
+/* =========================================================
+   9. CONTENT
+   ========================================================= */
+
+.content {
+    width: 100%;
+
+    max-width: 1600px;
+
+    margin: 0 auto;
+
+    padding: var(--content-padding);
+
+    background: var(--dark-bg);
+}
+
+
+/* =========================================================
+   10. PAGE HEADER
+   ========================================================= */
+
+.page-header {
+    margin-bottom: 25px;
+}
+
+.page-header h1,
+.page-header h2,
+.page-header h3 {
+    margin: 0 0 6px;
+
+    color: var(--text-main);
+
+    font-size: 30px;
+
+    font-weight: 750;
+}
+
+.page-header p {
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   11. PAGE TITLES
+   ========================================================= */
+
+.page-title,
+.content-title {
+    margin: 0 0 6px;
+
+    color: var(--text-main);
+
+    font-size: 30px;
+
+    font-weight: 750;
+}
+
+.page-subtitle,
+.content-subtitle {
+    margin-bottom: 25px;
+
+    color: var(--text-secondary);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   12. WELCOME HERO
+   ========================================================= */
+
+.welcome-hero {
+    position: relative;
+
+    overflow: hidden;
+
+    margin-bottom: 25px;
+
+    padding: 30px;
+
+    border-radius: var(--radius-xl);
+
+    background:
+        linear-gradient(
+            120deg,
+            #15102f,
+            #1b1740 45%,
+            #29205d
+        );
+
+    color: #ffffff;
+
+    border:
+        1px solid var(--primary-border);
+
+    box-shadow:
+        var(--shadow-primary);
+}
+
+.welcome-hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    right: -90px;
+    top: -130px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.06);
+}
+
+.welcome-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    right: 70px;
+    bottom: -120px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.04);
+}
+
+.welcome-hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+.welcome-hero h1,
+.welcome-hero h2,
+.welcome-hero h3 {
+    color: #ffffff;
+
+    font-weight: 750;
+}
+
+.welcome-hero p {
+    color: #c4b5fd;
+}
+
+
+/* =========================================================
+   13. STAT CARDS
+   ========================================================= */
+
+.stat-card {
+    height: 100%;
+
+    padding: 21px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #111629,
+            #0e1222
+        );
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow);
+
+    color: var(--text-main);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(98, 70, 234, 0.45);
+
+    box-shadow:
+        var(--shadow-hover),
+        0 0 20px rgba(98, 70, 234, 0.08);
+}
+
+.stat-icon {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 14px;
+
+    border-radius: 13px;
+
+    font-size: 20px;
+}
+
+.stat-number {
+    margin-bottom: 4px;
+
+    color: var(--text-main);
+
+    font-size: 28px;
+
+    font-weight: 750;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   14. STAT ICON COLORS
+   ========================================================= */
+
+.stat-icon.blue {
+    background: var(--info-bg) !important;
+    color: var(--info) !important;
+}
+
+.stat-icon.green {
+    background: var(--success-bg) !important;
+    color: var(--success) !important;
+}
+
+.stat-icon.orange {
+    background: var(--warning-bg) !important;
+    color: var(--warning) !important;
+}
+
+.stat-icon.purple {
+    background: var(--purple-bg) !important;
+    color: var(--purple) !important;
+}
+
+.stat-icon.red {
+    background: var(--danger-bg) !important;
+    color: var(--danger) !important;
+}
+
+
+/* =========================================================
+   15. COMMON CARDS
+   ========================================================= */
+
+.card,
+.dashboard-card,
+.card-custom,
+.manager-card,
+.page-section,
+.performance-card,
+.info-card {
+    background: var(--card-bg);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow);
+
+    color: var(--text-main);
+
+    overflow: hidden;
+}
+
+.card {
+    margin-bottom: 25px;
+}
+
+.card:hover,
+.dashboard-card:hover,
+.manager-card:hover {
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* =========================================================
+   16. CARD HEADERS
+   ========================================================= */
+
+.card-header,
+.card-heading,
+.card-header-custom,
+.manager-card-header,
+.info-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 18px 22px;
+
+    background: var(--card-bg);
+
+    color: var(--text-main);
+
+    border-bottom:
+        1px solid var(--border);
+
+    font-weight: 700;
+}
+
+.card-header h1,
+.card-header h2,
+.card-header h3,
+.card-header h4,
+.card-header h5,
+.card-header h6,
+.card-heading h1,
+.card-heading h2,
+.card-heading h3,
+.card-heading h4,
+.card-heading h5,
+.card-heading h6 {
+    margin: 0;
+
+    color: var(--text-main);
+}
+
+.card-header i,
+.card-heading i {
+    color: var(--info);
+}
+
+.card-body,
+.card-body-custom,
+.manager-card-body,
+.info-card-body {
+    padding: 22px;
+
+    background: var(--card-bg);
+
+    color: var(--text-main);
+}
+
+
+/* =========================================================
+   17. TEAM SUMMARY
+   ========================================================= */
+
+.summary-card {
+    position: relative;
+
+    overflow: hidden;
+
+    margin-bottom: 25px;
+
+    padding: 24px 28px;
+
+    border-radius: var(--radius-lg);
+
+    background:
+        linear-gradient(
+            120deg,
+            #2563eb,
+            #4f46e5
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 8px 25px rgba(37, 99, 235, 0.18);
+}
+
+.summary-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: -60px;
+    top: -80px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+}
+
+.summary-card h4 {
+    position: relative;
+
+    z-index: 2;
+
+    margin: 0 0 5px;
+
+    color: #ffffff;
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+.summary-card p {
+    position: relative;
+
+    z-index: 2;
+
+    margin: 0;
+
+    color: #dbeafe;
+
+    font-size: 13px;
+}
+
+.summary-card .summary-number,
+.summary-number {
+    position: relative;
+
+    z-index: 2;
+
+    color: #ffffff;
+
+    font-size: 30px;
+
+    line-height: 1.1;
+
+    font-weight: 750;
+}
+
+
+/* =========================================================
+   18. TEAM CARDS
+   ========================================================= */
+
+.team-card {
+    height: 100%;
+
+    overflow: hidden;
+
+    background: var(--card-bg);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow);
+
+    transition: var(--transition);
+}
+
+.team-card:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        var(--border-primary);
+
+    box-shadow:
+        var(--shadow-hover);
+}
+
+.team-card-header {
+    padding: 20px 22px;
+
+    background: var(--card-bg);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.team-card-body {
+    padding: 21px 22px;
+
+    background: var(--card-bg);
+}
+
+
+/* =========================================================
+   19. TEAM MEMBER
+   ========================================================= */
+
+.member-avatar,
+.team-avatar {
+    width: 48px;
+    height: 48px;
+
+    min-width: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(96, 165, 250, 0.18),
+            rgba(124, 92, 255, 0.18)
+        );
+
+    color: var(--info);
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    border:
+        2px solid rgba(96, 165, 250, 0.25);
+}
+
+.team-avatar {
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+
+    font-size: 14px;
+}
+
+.member-name,
+.team-name {
+    color: var(--text-main);
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+.team-name {
+    font-size: 14px;
+}
+
+.member-code,
+.team-role {
+    color: var(--text-secondary);
+
+    font-size: 11px;
+}
+
+.team-role {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   20. TEAM INFO
+   ========================================================= */
+
+.info-item {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 11px 0;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    display: flex;
+
+    align-items: center;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.info-label i {
+    color: var(--info);
+
+    font-size: 14px;
+}
+
+.info-value {
+    color: var(--text-main);
+
+    font-size: 12px;
+
+    font-weight: 650;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   21. WORKLOAD BADGES
+   ========================================================= */
+
+.workload-badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.workload-low {
+    background: var(--success-bg);
+    color: var(--success);
+}
+
+.workload-medium {
+    background: var(--warning-bg);
+    color: var(--warning);
+}
+
+.workload-high {
+    background: var(--danger-bg);
+    color: var(--danger);
+}
+
+
+/* =========================================================
+   22. PERFORMANCE
+   ========================================================= */
+
+.performance-card {
+    padding: 23px;
+}
+
+.performance-name {
+    color: var(--text-main);
+
+    font-weight: 700;
+}
+
+.performance-role {
+    color: var(--text-secondary);
+
+    font-size: 12px;
+}
+
+.performance-score,
+.performance-value {
+    color: var(--info);
+
+    font-size: 13px;
+
+    font-weight: 750;
+}
+
+.performance-label {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   23. PROGRESS
+   ========================================================= */
+
+.progress {
+    height: 9px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: #20263a;
+}
+
+.progress-bar {
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--primary-light)
+        ) !important;
+}
+
+.team-card .progress,
+.task-card .progress {
+    height: 8px;
+}
+
+
+/* =========================================================
+   24. PROJECT ROW
+   ========================================================= */
+
+.project-row {
+    margin-bottom: 18px;
+
+    padding: 22px 24px;
+
+    background: var(--card-bg-secondary);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.15);
+
+    transition: var(--transition);
+}
+
+.project-row:hover {
+    transform: translateY(-2px);
+
+    background: var(--card-hover);
+
+    border-color:
+        var(--border-primary);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.project-title {
+    margin-bottom: 5px;
+
+    color: var(--text-main);
+
+    font-size: 17px;
+
+    font-weight: 700;
+}
+
+.project-description {
+    max-width: 600px;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+.project-info {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    margin-top: 18px;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid var(--border);
+}
+
+.project-info-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+}
+
+.project-info-item i {
+    color: var(--info);
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   25. TASK CARD
+   ========================================================= */
+
+.task-card {
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    overflow: hidden;
+
+    background: var(--card-bg);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow);
+}
+
+.task-card .card-heading {
+    min-height: 64px;
+
+    padding: 18px 23px;
+
+    background: var(--card-bg);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.task-card .card-heading h5 {
+    margin: 0;
+
+    color: var(--text-main);
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+.task-card .card-heading h5 i {
+    margin-right: 7px;
+
+    color: var(--info);
+}
+
+.task-card .card-body-custom {
+    padding: 0;
+
+    background: var(--card-bg);
+}
+
+
+/* =========================================================
+   26. TASK ITEM
+   ========================================================= */
+
+.task-item {
+    padding: 20px 23px;
+
+    background: var(--card-bg);
+
+    border-bottom:
+        1px solid var(--border);
+
+    transition:
+        background 0.2s ease;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-item:hover {
+    background: var(--card-hover);
+}
+
+
+/* =========================================================
+   27. TASK MAIN GRID
+   ========================================================= */
+
+.task-main {
+    display: grid;
+
+    grid-template-columns:
+        48px
+        minmax(220px, 1fr)
+        minmax(150px, 200px)
+        90px
+        110px
+        120px;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   28. TASK ICON
+   ========================================================= */
+
+.task-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: var(--info-bg);
+
+    color: var(--info);
+
+    font-size: 20px;
+}
+
+
+/* =========================================================
+   29. TASK INFORMATION
+   ========================================================= */
+
+.task-info {
+    min-width: 0;
+}
+
+.task-title {
+    margin-bottom: 5px;
+
+    color: var(--text-main);
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+.task-project {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-bottom: 6px;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+}
+
+.task-project i {
+    color: var(--info);
+}
+
+.task-description {
+    max-width: 500px;
+
+    display: -webkit-box;
+
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   30. EMPLOYEE BOX
+   ========================================================= */
+
+.employee-box {
+    min-width: 0;
+}
+
+.employee-name {
+    overflow: hidden;
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+
+    font-weight: 650;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+.employee-name i {
+    margin-right: 4px;
+}
+
+.employee-code {
+    margin-top: 4px;
+
+    color: var(--text-muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   31. PRIORITY BADGES
+   ========================================================= */
+
+.priority-badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px 11px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.priority-high {
+    background: var(--danger-bg);
+    color: var(--danger);
+}
+
+.priority-medium {
+    background: var(--warning-bg);
+    color: var(--warning);
+}
+
+.priority-low {
+    background: var(--success-bg);
+    color: var(--success);
+}
+
+
+/* =========================================================
+   32. STATUS BADGES
+   ========================================================= */
+
+.status-badge,
+.badge {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* Active */
+
+.status-active,
+.badge-active {
+    background: var(--success-bg) !important;
+
+    color: var(--success) !important;
+
+    border:
+        1px solid var(--success-border);
+}
+
+
+/* Completed */
+
+.status-completed,
+.badge-completed {
+    background: var(--info-bg) !important;
+
+    color: var(--info) !important;
+
+    border:
+        1px solid var(--info-border);
+}
+
+
+/* Progress */
+
+.status-progress,
+.badge-progress {
+    background: var(--primary-bg) !important;
+
+    color: var(--primary-light) !important;
+
+    border:
+        1px solid var(--primary-border);
+}
+
+
+/* Pending */
+
+.status-pending,
+.badge-pending {
+    background: var(--warning-bg) !important;
+
+    color: var(--warning) !important;
+
+    border:
+        1px solid var(--warning-border);
+}
+
+
+/* Planning */
+
+.status-planning {
+    background: var(--warning-bg) !important;
+
+    color: var(--warning) !important;
+
+    border:
+        1px solid var(--warning-border);
+}
+
+
+/* Hold */
+
+.status-hold {
+    background: var(--danger-bg) !important;
+
+    color: var(--danger) !important;
+
+    border:
+        1px solid var(--danger-border);
+}
+
+
+/* Inactive */
+
+.status-inactive {
+    background:
+        rgba(148, 163, 184, 0.12) !important;
+
+    color: var(--text-secondary) !important;
+
+    border:
+        1px solid rgba(148, 163, 184, 0.15);
+}
+
+
+/* =========================================================
+   33. DATE BOX
+   ========================================================= */
+
+.date-box {
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+.date-box div {
+    margin-bottom: 2px;
+}
+
+.date-box strong {
+    color: var(--text-soft);
+
+    font-size: 12px;
+
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   34. PROFILE HEADER
+   ========================================================= */
+
+.profile-header {
+    position: relative;
+
+    overflow: hidden;
+
+    margin-bottom: 25px;
+
+    padding: 30px;
+
+    border-radius: var(--radius-xl);
+
+    background:
+        linear-gradient(
+            135deg,
+            #15102f 0%,
+            #1b1740 45%,
+            #29205d 100%
+        );
+
+    color: #ffffff;
+
+    border:
+        1px solid var(--primary-border);
+
+    box-shadow:
+        var(--shadow-primary);
+}
+
+.profile-header h1,
+.profile-header h2,
+.profile-header h3 {
+    color: #ffffff;
+
+    font-weight: 750;
+}
+
+.profile-header p {
+    color: #c4b5fd;
+}
+
+.profile-role {
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   35. PROFILE AVATAR
+   ========================================================= */
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        );
+
+    color: #ffffff;
+
+    font-size: 30px;
+
+    font-weight: 750;
+
+    border:
+        3px solid rgba(255, 255, 255, 0.85);
+
+    box-shadow:
+        0 8px 25px rgba(98, 70, 234, 0.35);
+}
+
+
+/* =========================================================
+   36. PROFILE INFORMATION ROW
+   ========================================================= */
+
+.info-row {
+    display: grid;
+
+    grid-template-columns:
+        34px
+        minmax(0, 1fr)
+        auto;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-height: 58px;
+
+    padding: 8px 0;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-icon {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background:
+        var(--primary-bg);
+
+    color: var(--info);
+
+    font-size: 14px;
+}
+
+.info-row .info-label {
+    margin: 0 0 2px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+.info-row .info-value {
+    color: var(--text-main);
+
+    font-size: 13px;
+
+    font-weight: 650;
+
+    line-height: 1.3;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   37. ACCOUNT INFORMATION
+   ========================================================= */
+
+.account-box {
+    height: 100%;
+
+    padding: 15px 16px;
+
+    background: var(--card-bg-secondary);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 12px;
+
+    color: var(--text-main);
+
+    transition: var(--transition);
+}
+
+.account-box:hover {
+    background: var(--card-hover);
+
+    border-color:
+        var(--border-primary);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.20);
+}
+
+.account-box > i {
+    display: inline-flex;
+
+    width: 34px;
+    height: 34px;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 8px;
+
+    border-radius: 9px;
+
+    background:
+        var(--primary-bg);
+
+    color: var(--primary-light);
+
+    font-size: 15px;
+}
+
+.account-box h6 {
+    margin: 0 0 3px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+.account-box p {
+    margin: 0;
+
+    color: var(--text-main);
+
+    font-size: 13px;
+
+    font-weight: 650;
+
+    line-height: 1.35;
+}
+
+
+/* =========================================================
+   38. TABLES
+   ========================================================= */
+
+.table-responsive {
+    overflow-x: auto;
+
+    border-radius: 12px;
+}
+
+.table {
+    margin-bottom: 0;
+
+    background: var(--card-bg);
+
+    color: var(--text-main);
+}
+
+.table thead th {
+    padding: 13px 15px;
+
+    background: #0d1222;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    border-bottom:
+        1px solid var(--border);
+
+    white-space: nowrap;
+}
+
+.table tbody td {
+    padding: 14px 15px;
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+
+    vertical-align: middle;
+
+    border-color:
+        var(--border);
+}
+
+.table tbody tr {
+    background: var(--card-bg);
+}
+
+.table tbody tr:hover {
+    background: var(--card-hover);
+}
+
+
+/* =========================================================
+   39. FORMS
+   ========================================================= */
+
+.form-control,
+.form-select {
+    min-height: 42px;
+
+    background: var(--input-bg);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-sm);
+
+    color: var(--text-main);
+
+    font-size: 13px;
+
+    box-shadow: none !important;
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: var(--input-bg);
+
+    color: var(--text-main);
+
+    border-color:
+        var(--primary-light);
+
+    box-shadow:
+        0 0 0 3px rgba(98, 70, 234, 0.15) !important;
+}
+
+.form-select option {
+    background: var(--card-bg);
+
+    color: var(--text-main);
+}
+
+.form-label,
+label {
+    margin-bottom: 6px;
+
+    color: var(--text-soft);
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   40. BUTTONS
+   ========================================================= */
+
+.btn-primary {
+    padding: 9px 16px;
+
+    border: none !important;
+
+    border-radius: var(--radius-sm);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        ) !important;
+
+    color: #ffffff !important;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 4px 12px rgba(98, 70, 234, 0.22);
+
+    transition: var(--transition);
+}
+
+.btn-primary:hover {
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-dark),
+            var(--primary)
+        ) !important;
+
+    color: #ffffff !important;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 7px 18px rgba(98, 70, 234, 0.30);
+}
+
+.btn-outline-primary {
+    border:
+        1px solid var(--primary) !important;
+
+    border-radius: var(--radius-sm);
+
+    color: var(--primary-light) !important;
+
+    font-weight: 600;
+
+    background: transparent !important;
+}
+
+.btn-outline-primary:hover {
+    background:
+        var(--primary) !important;
+
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   41. HEADER BUTTONS
+   ========================================================= */
+
+.topbar .btn,
+.card-header .btn,
+.card-heading .btn,
+.manager-card-header .btn,
+.info-card-header .btn {
+    color: var(--text-main);
+}
+
+.topbar .btn-outline-primary,
+.card-header .btn-outline-primary,
+.card-heading .btn-outline-primary {
+    background: transparent !important;
+
+    border-color:
+        var(--primary) !important;
+
+    color: var(--primary-light) !important;
+}
+
+.topbar .btn-outline-primary:hover,
+.card-header .btn-outline-primary:hover,
+.card-heading .btn-outline-primary:hover {
+    background:
+        var(--primary) !important;
+
+    border-color:
+        var(--primary) !important;
+
+    color: #ffffff !important;
+}
+
+.topbar .btn-light,
+.card-header .btn-light,
+.card-heading .btn-light {
+    background: var(--card-hover) !important;
+
+    border-color: var(--border) !important;
+
+    color: var(--text-main) !important;
+}
+
+.topbar .btn-light:hover,
+.card-header .btn-light:hover,
+.card-heading .btn-light:hover {
+    background: var(--border) !important;
+
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   42. DROPDOWNS
+   ========================================================= */
+
+.dropdown-menu {
+    background: var(--card-bg) !important;
+
+    border:
+        1px solid var(--border) !important;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.30);
+}
+
+.dropdown-item {
+    color: var(--text-main) !important;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background: var(--card-hover) !important;
+
+    color: #ffffff !important;
+}
+
+.topbar .dropdown-toggle {
+    background: var(--card-hover) !important;
+
+    border-color: var(--border) !important;
+
+    color: var(--text-main) !important;
+}
+
+
+/* =========================================================
+   43. EMPTY STATES
+   ========================================================= */
+
+.empty-state {
+    padding: 60px 25px;
+
+    margin-top: 10px;
+
+    background: var(--card-bg);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow);
+
+    text-align: center;
+
+    color: var(--text-secondary);
+}
+
+.empty-state i,
+.empty-icon {
+    width: 62px;
+    height: 62px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 15px;
+
+    border-radius: 18px;
+
+    background: var(--primary-bg);
+
+    color: var(--primary-light);
+
+    font-size: 27px;
+}
+
+.empty-state h4,
+.empty-state h5 {
+    margin-bottom: 7px;
+
+    color: var(--text-main);
+
+    font-size: 18px;
+
+    font-weight: 700;
+}
+
+.empty-state p {
+    margin: 0;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   44. ALERTS
+   ========================================================= */
+
+.alert {
+    border: none;
+
+    border-radius: var(--radius-md);
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   45. FOOTER
+   ========================================================= */
+
+footer,
+.manager-footer {
+    padding: 25px 15px;
+
+    margin-top: 20px;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   46. BOOTSTRAP HELPERS
+   ========================================================= */
+
+.text-muted {
+    color: var(--text-secondary) !important;
+}
+
+.text-primary {
+    color: var(--info) !important;
+}
+
+.text-success {
+    color: var(--success) !important;
+}
+
+.text-warning {
+    color: var(--warning) !important;
+}
+
+.text-danger {
+    color: var(--danger) !important;
+}
+
+.bg-primary {
+    background:
+        var(--primary) !important;
+}
+
+
+/* =========================================================
+   47. TASK PAGE BADGE
+   ========================================================= */
+
+.task-card .badge.bg-primary {
+    padding: 6px 11px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary-light)
+        ) !important;
+
+    color: #ffffff !important;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   48. ROW SPACING
+   ========================================================= */
+
+.row {
+    --bs-gutter-x: 1.25rem;
+    --bs-gutter-y: 1.25rem;
+}
+
+
+/* =========================================================
+   49. TABLET
+   ========================================================= */
+
+@media (max-width: 1199px) {
+
+    .task-main {
+        grid-template-columns:
+            45px
+            minmax(200px, 1fr)
+            minmax(130px, 170px)
+            80px
+            100px;
+
+        gap: 14px;
+    }
+
+    .date-box {
+        grid-column: 2 / -1;
+
+        margin-top: 5px;
+    }
+}
+
+
+/* =========================================================
+   50. COLLAPSED SIDEBAR
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .sidebar {
+        width: var(--sidebar-collapsed-width);
+
+        padding: 20px 10px;
+    }
+
+    .brand {
+        justify-content: center;
+    }
+
+    .brand-text {
+        display: none;
+    }
+
+    .nav-link-custom {
+        justify-content: center;
+
+        padding: 12px 8px;
+    }
+
+    .nav-link-custom span,
+    .nav-text {
+        display: none;
+    }
+
+    .main {
+        width:
+            calc(100% - var(--sidebar-collapsed-width));
+
+        margin-left:
+            var(--sidebar-collapsed-width);
+    }
+
+    .content {
+        padding: 25px;
+    }
+}
+
+
+/* =========================================================
+   51. MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        width: 100%;
+
+        margin-left: 0;
+    }
+
+    .topbar {
+        height: 62px;
+
+        padding: 0 16px;
+    }
+
+    .content {
+        padding: 18px;
+    }
+
+
+    /* ---------- Headers ---------- */
+
+    .page-header h1,
+    .page-header h2,
+    .page-header h3 {
+        font-size: 25px;
+    }
+
+    .page-title,
+    .content-title {
+        font-size: 25px;
+    }
+
+
+    /* ---------- Hero ---------- */
+
+    .welcome-hero {
+        padding: 23px;
+
+        border-radius: 16px;
+    }
+
+    .welcome-hero h1,
+    .welcome-hero h2 {
+        font-size: 23px;
+    }
+
+
+    /* ---------- Cards ---------- */
+
+    .stat-card {
+        padding: 18px;
+    }
+
+    .stat-number {
+        font-size: 25px;
+    }
+
+    .card-header,
+    .card-heading,
+    .card-header-custom,
+    .manager-card-header,
+    .info-card-header {
+        padding: 17px;
+    }
+
+    .card-body,
+    .card-body-custom,
+    .manager-card-body,
+    .info-card-body {
+        padding: 17px;
+    }
+
+
+    /* ---------- Tasks ---------- */
+
+    .task-card .card-heading {
+        padding: 17px;
+    }
+
+    .task-item {
+        padding: 18px;
+    }
+
+    .task-main {
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 13px;
+    }
+
+    .task-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .task-title {
+        font-size: 14px;
+    }
+
+    .employee-box {
+        padding: 10px 12px;
+
+        background: var(--card-hover);
+
+        border-radius: 10px;
+    }
+
+    .employee-name {
+        white-space: normal;
+    }
+
+    .priority-badge,
+    .status-badge {
+        width: fit-content;
+    }
+
+    .date-box {
+        padding-top: 3px;
+    }
+
+
+    /* ---------- Summary ---------- */
+
+    .summary-card {
+        padding: 21px;
+    }
+
+    .summary-card .text-md-end {
+        text-align: left !important;
+    }
+
+
+    /* ---------- Team ---------- */
+
+    .team-card-header {
+        padding: 18px;
+    }
+
+    .team-card-body {
+        padding: 18px;
+    }
+
+    .info-item {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+    .info-value {
+        text-align: left;
+    }
+
+
+    /* ---------- Profile ---------- */
+
+    .profile-header {
+        padding: 23px;
+    }
+
+    .info-row {
+        grid-template-columns:
+            32px
+            minmax(0, 1fr);
+
+        gap: 10px;
+
+        min-height: 54px;
+    }
+
+    .info-row > div:last-child {
+        grid-column: 2;
+
+        text-align: left;
+    }
+
+    .info-row .info-value {
+        text-align: left;
+    }
+
+    .account-box {
+        padding: 13px 14px;
+    }
+
+
+    /* ---------- Topbar ---------- */
+
+    .user-area .text-end {
+        display: none !important;
+    }
+}
+
+
+/* =========================================================
+   52. SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .content {
+        padding: 14px;
+    }
+
+    .topbar {
+        padding: 0 12px;
+    }
+
+    .welcome-hero {
+        padding: 20px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .empty-state {
+        padding: 40px 15px;
+    }
+
+    .task-card .card-heading {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 10px;
+    }
+
+    .task-item {
+        padding: 16px;
+    }
+
+    .task-description {
+        font-size: 11px;
+    }
+
+    .summary-card {
+        padding: 19px;
+
+        border-radius: 15px;
+    }
+
+    .summary-card .summary-number {
+        font-size: 26px;
+    }
+}
+
+
+/* =========================================================
+   53. SCROLLBARS
+   ========================================================= */
+
+.sidebar::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    background: #292d45;
+
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+/* =========================================================
+   FINAL MANAGER DARK THEME FIX
+   Fixes Team Cards, Text Visibility, Topbar and Components
+   ========================================================= */
+
+/* =========================================================
+   DARK THEME VARIABLES
+   ========================================================= */
+
+:root {
+    --manager-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25);
+
+    --manager-shadow-hover:
+        0 15px 35px rgba(0, 0, 0, 0.35);
+
+    --dark-bg: #080b18;
+    --dark-sidebar: #0b0f21;
+    --dark-card: #101426;
+    --dark-card-2: #111629;
+    --dark-card-hover: #151a30;
+    --dark-border: #20263a;
+
+    --dark-text: #f8fafc;
+    --dark-text-secondary: #94a3b8;
+    --dark-text-muted: #64748b;
+
+    --dark-primary: #6246ea;
+    --dark-primary-light: #7c5cff;
+    --dark-info: #60a5fa;
+
+    --dark-success: #34d399;
+    --dark-warning: #fbbf24;
+    --dark-danger: #fb7185;
+}
+
+
+/* =========================================================
+   GLOBAL DARK BACKGROUND
+   ========================================================= */
+
+html,
+body {
+    background: var(--dark-bg) !important;
+    color: var(--dark-text) !important;
+}
+
+.main {
+    background: var(--dark-bg) !important;
+}
+
+.content {
+    background: var(--dark-bg) !important;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    background:
+        linear-gradient(
+            180deg,
+            #0b0f21 0%,
+            #080b18 100%
+        ) !important;
+
+    border-right: 1px solid var(--dark-border) !important;
+
+    box-shadow:
+        3px 0 18px rgba(0, 0, 0, 0.25) !important;
+}
+
+.brand {
+    border-bottom:
+        1px solid var(--dark-border) !important;
+}
+
+.brand-text h5 {
+    color: #f8fafc !important;
+}
+
+.brand-text small {
+    color: #94a3b8 !important;
+}
+
+.nav-link-custom {
+    color: #94a3b8 !important;
+}
+
+.nav-link-custom:hover {
+    background:
+        rgba(98, 70, 234, 0.14) !important;
+
+    color: #ffffff !important;
+}
+
+.nav-link-custom.active {
+    background:
+        linear-gradient(
+            135deg,
+            #6246ea,
+            #7048f5
+        ) !important;
+
+    color: #ffffff !important;
+
+    box-shadow:
+        0 8px 25px rgba(98, 70, 234, 0.30) !important;
+}
+
+.nav-link-custom i {
+    color: inherit !important;
+}
+
+
+/* =========================================================
+   TOPBAR - IMPORTANT
+   ========================================================= */
+
+.topbar {
+    background: #101426 !important;
+
+    border-bottom:
+        1px solid var(--dark-border) !important;
+
+    color: #f8fafc !important;
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.20) !important;
+}
+
+.portal-title {
+    color: #f8fafc !important;
+}
+
+.portal-title i {
+    color: #60a5fa !important;
+}
+
+.user-area {
+    color: #f8fafc !important;
+}
+
+.user-area strong {
+    color: #f8fafc !important;
+}
+
+.user-area small,
+.user-area div div {
+    color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   AVATAR
+   ========================================================= */
+
+.avatar {
+    background:
+        linear-gradient(
+            135deg,
+            #6246ea,
+            #7c5cff
+        ) !important;
+
+    color: #ffffff !important;
+
+    border:
+        2px solid rgba(124, 92, 255, 0.7) !important;
+
+    box-shadow:
+        0 6px 20px rgba(98, 70, 234, 0.30) !important;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.page-header h2,
+.page-title,
+.content-title {
+    color: #f8fafc !important;
+}
+
+.page-header p,
+.page-subtitle,
+.content-subtitle {
+    color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   TEAM SUMMARY CARD
+   ========================================================= */
+
+.summary-card {
+    background:
+        linear-gradient(
+            120deg,
+            #2563eb 0%,
+            #4f46e5 100%
+        ) !important;
+
+    color: #ffffff !important;
+
+    border: none !important;
+
+    box-shadow:
+        0 8px 25px rgba(37, 99, 235, 0.25) !important;
+}
+
+.summary-card h4,
+.summary-card h5,
+.summary-card h6 {
+    color: #ffffff !important;
+}
+
+.summary-card p {
+    color: #dbeafe !important;
+}
+
+.summary-card .summary-number {
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   ⭐ TEAM CARD - MAIN FIX
+   ========================================================= */
+
+.team-card {
+    background: var(--dark-card) !important;
+
+    border:
+        1px solid var(--dark-border) !important;
+
+    border-radius: 18px !important;
+
+    box-shadow:
+        var(--manager-shadow) !important;
+
+    color: #f8fafc !important;
+
+    overflow: hidden !important;
+
+    height: 100%;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.team-card:hover {
+    background: var(--dark-card-hover) !important;
+
+    border-color:
+        rgba(98, 70, 234, 0.45) !important;
+
+    transform: translateY(-4px) !important;
+
+    box-shadow:
+        var(--manager-shadow-hover) !important;
+}
+
+
+/* =========================================================
+   ⭐ TEAM CARD HEADER - MAIN FIX
+   ========================================================= */
+
+.team-card-header {
+    background: var(--dark-card) !important;
+
+    border-bottom:
+        1px solid var(--dark-border) !important;
+
+    color: #f8fafc !important;
+
+    padding: 20px 22px !important;
+}
+
+
+/* =========================================================
+   ⭐ TEAM CARD BODY - MAIN FIX
+   ========================================================= */
+
+.team-card-body {
+    background: var(--dark-card) !important;
+
+    color: #f8fafc !important;
+
+    padding: 21px 22px !important;
+}
+
+
+/* =========================================================
+   MEMBER AVATAR
+   ========================================================= */
+
+.member-avatar {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(98, 70, 234, 0.20),
+            rgba(124, 92, 255, 0.15)
+        ) !important;
+
+    color: #a78bfa !important;
+
+    border:
+        2px solid rgba(124, 92, 255, 0.35) !important;
+
+    box-shadow:
+        0 4px 15px rgba(98, 70, 234, 0.15);
+}
+
+
+/* =========================================================
+   MEMBER NAME
+   ========================================================= */
+
+.member-name {
+    color: #f8fafc !important;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+.member-code {
+    color: #94a3b8 !important;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   ⭐ TEAM INFORMATION ROWS
+   ========================================================= */
+
+.team-card .info-item {
+    background: transparent !important;
+
+    border-bottom:
+        1px solid var(--dark-border) !important;
+
+    color: #f8fafc !important;
+}
+
+.team-card .info-item:last-child {
+    border-bottom: none !important;
+}
+
+
+/* =========================================================
+   INFORMATION LABEL
+   ========================================================= */
+
+.team-card .info-label {
+    color: #94a3b8 !important;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.team-card .info-label i {
+    color: #60a5fa !important;
+}
+
+
+/* =========================================================
+   ⭐ INFORMATION VALUE
+   ========================================================= */
+
+.team-card .info-value {
+    color: #f8fafc !important;
+
+    font-size: 12px;
+
+    font-weight: 650;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   WORKLOAD BADGES
+   ========================================================= */
+
+.workload-low {
+    background:
+        rgba(52, 211, 153, 0.14) !important;
+
+    color:
+        #34d399 !important;
+
+    border:
+        1px solid rgba(52, 211, 153, 0.20);
+}
+
+.workload-medium {
+    background:
+        rgba(251, 191, 36, 0.14) !important;
+
+    color:
+        #fbbf24 !important;
+
+    border:
+        1px solid rgba(251, 191, 36, 0.20);
+}
+
+.workload-high {
+    background:
+        rgba(251, 113, 133, 0.14) !important;
+
+    color:
+        #fb7185 !important;
+
+    border:
+        1px solid rgba(251, 113, 133, 0.20);
+}
+
+
+/* =========================================================
+   TEAM PERFORMANCE
+   ========================================================= */
+
+.team-card .performance-label {
+    color: #94a3b8 !important;
+}
+
+.team-card .performance-value {
+    color: #60a5fa !important;
+}
+
+
+/* =========================================================
+   TEAM PROGRESS
+   ========================================================= */
+
+.team-card .progress {
+    background: #20263a !important;
+
+    height: 9px !important;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.team-card .progress-bar {
+    background:
+        linear-gradient(
+            90deg,
+            #6246ea,
+            #7c5cff
+        ) !important;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 10px rgba(98, 70, 234, 0.25);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-state {
+    background: var(--dark-card) !important;
+
+    border:
+        1px solid var(--dark-border) !important;
+
+    color: #94a3b8 !important;
+
+    box-shadow:
+        var(--manager-shadow) !important;
+}
+
+.empty-state h4,
+.empty-state h5 {
+    color: #f8fafc !important;
+}
+
+.empty-state p {
+    color: #94a3b8 !important;
+}
+
+.empty-state i,
+.empty-icon {
+    background:
+        rgba(98, 70, 234, 0.12) !important;
+
+    color: #7c5cff !important;
+}
+
+
+/* =========================================================
+   GENERAL DASHBOARD CARDS
+   ========================================================= */
+
+.dashboard-card,
+.card-custom,
+.manager-card,
+.page-section,
+.performance-card,
+.info-card {
+    background: var(--dark-card) !important;
+
+    border:
+        1px solid var(--dark-border) !important;
+
+    color: #f8fafc !important;
+
+    box-shadow:
+        var(--manager-shadow) !important;
+}
+
+.card-heading,
+.card-header,
+.card-header-custom,
+.manager-card-header,
+.info-card-header {
+    background: var(--dark-card) !important;
+
+    border-bottom:
+        1px solid var(--dark-border) !important;
+
+    color: #f8fafc !important;
+}
+
+.card-heading h5,
+.card-heading h4,
+.card-header h5,
+.card-header h4 {
+    color: #f8fafc !important;
+}
+
+.card-body-custom,
+.card-body,
+.manager-card-body,
+.info-card-body {
+    background: var(--dark-card) !important;
+
+    color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   PROJECT ROW
+   ========================================================= */
+
+.project-row {
+    background: var(--dark-card-2) !important;
+
+    border:
+        1px solid var(--dark-border) !important;
+
+    color: #f8fafc !important;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.20) !important;
+}
+
+.project-row:hover {
+    background: var(--dark-card-hover) !important;
+
+    border-color:
+        rgba(98, 70, 234, 0.40) !important;
+}
+
+.project-title {
+    color: #f8fafc !important;
+}
+
+.project-description {
+    color: #94a3b8 !important;
+}
+
+.project-info {
+    border-top:
+        1px solid var(--dark-border) !important;
+}
+
+.project-info-item {
+    color: #94a3b8 !important;
+}
+
+.project-info-item i {
+    color: #60a5fa !important;
+}
+
+
+/* =========================================================
+   STAT CARDS
+   ========================================================= */
+
+.stat-card {
+    background:
+        linear-gradient(
+            145deg,
+            #111629,
+            #0e1222
+        ) !important;
+
+    border:
+        1px solid var(--dark-border) !important;
+
+    color: #f8fafc !important;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.20) !important;
+}
+
+.stat-number {
+    color: #f8fafc !important;
+}
+
+.stat-label {
+    color: #94a3b8 !important;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.btn-primary {
+    background:
+        linear-gradient(
+            135deg,
+            #6246ea,
+            #7048f5
+        ) !important;
+
+    border: none !important;
+
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    background:
+        linear-gradient(
+            135deg,
+            #7048f5,
+            #7c5cff
+        ) !important;
+}
+
+.btn-outline-primary {
+    background: transparent !important;
+
+    border:
+        1px solid #6246ea !important;
+
+    color: #a78bfa !important;
+}
+
+.btn-outline-primary:hover {
+    background: #6246ea !important;
+
+    border-color: #6246ea !important;
+
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   FORMS
+   ========================================================= */
+
+.form-control,
+.form-select {
+    background: #111629 !important;
+
+    border:
+        1px solid var(--dark-border) !important;
+
+    color: #f8fafc !important;
+}
+
+.form-control::placeholder {
+    color: #64748b !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: #111629 !important;
+
+    border-color: #6246ea !important;
+
+    color: #f8fafc !important;
+
+    box-shadow:
+        0 0 0 3px rgba(98, 70, 234, 0.15) !important;
+}
+
+.form-label,
+label {
+    color: #cbd5e1 !important;
+}
+
+
+/* =========================================================
+   TABLES
+   ========================================================= */
+
+.table {
+    background: var(--dark-card) !important;
+
+    color: #f8fafc !important;
+}
+
+.table thead th {
+    background: #111629 !important;
+
+    color: #94a3b8 !important;
+
+    border-color: var(--dark-border) !important;
+}
+
+.table tbody td {
+    background: var(--dark-card) !important;
+
+    color: #cbd5e1 !important;
+
+    border-color: var(--dark-border) !important;
+}
+
+.table tbody tr:hover td {
+    background: var(--dark-card-hover) !important;
+}
+
+
+/* =========================================================
+   TEXT UTILITIES
+   ========================================================= */
+
+.text-muted {
+    color: #64748b !important;
+}
+
+.text-primary {
+    color: #60a5fa !important;
+}
+
+.text-success {
+    color: #34d399 !important;
+}
+
+.text-warning {
+    color: #fbbf24 !important;
+}
+
+.text-danger {
+    color: #fb7185 !important;
+}
+
+.bg-primary {
+    background: #6246ea !important;
+}
+
+
+/* =========================================================
+   DROPDOWNS
+   ========================================================= */
+
+.dropdown-menu {
+    background: #101426 !important;
+
+    border:
+        1px solid var(--dark-border) !important;
+}
+
+.dropdown-item {
+    color: #f8fafc !important;
+}
+
+.dropdown-item:hover {
+    background: #151a30 !important;
+
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   MOBILE TEAM CARD
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .team-card {
+        border-radius: 15px !important;
+    }
+
+    .team-card-header {
+        padding: 18px !important;
+    }
+
+    .team-card-body {
+        padding: 18px !important;
+    }
+
+    .team-card .info-item {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+    .team-card .info-value {
+        text-align: left !important;
+    }
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080b18;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #292d45;
+
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6246ea;
+}
+/* =========================================================
+   FINAL FIX - MANAGER TOP ACTION HEADER
+   ========================================================= */
+
+/* Main white header strip */
+header,
+.manager-header,
+.header,
+.top-header,
+.manager-top-header {
+    background: #101426 !important;
+    color: #f8fafc !important;
+    border-bottom: 1px solid #20263a !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.20) !important;
+}
+
+/* Any text inside the header */
+header h1,
+header h2,
+header h3,
+header h4,
+header h5,
+header h6,
+header p,
+.manager-header h1,
+.manager-header h2,
+.manager-header h3,
+.manager-header h4,
+.manager-header h5,
+.manager-header h6,
+.manager-header p,
+.header h1,
+.header h2,
+.header h3,
+.header h4,
+.header h5,
+.header h6,
+.header p {
+    color: #f8fafc !important;
+}
+
+/* Header links */
+header a,
+.manager-header a,
+.header a {
+    color: #f8fafc !important;
+}
+
+/* Dark button */
+header .btn-light,
+.manager-header .btn-light,
+.header .btn-light {
+    background: #151a30 !important;
+    border: 1px solid #2b3350 !important;
+    color: #f8fafc !important;
+}
+
+header .btn-light:hover,
+.manager-header .btn-light:hover,
+.header .btn-light:hover {
+    background: #20263a !important;
+    color: #ffffff !important;
+}
+
+/* Home button */
+header .btn-primary,
+.manager-header .btn-primary,
+.header .btn-primary {
+    background: linear-gradient(
+        135deg,
+        #6246ea,
+        #7048f5
+    ) !important;
+
+    border: none !important;
+    color: #ffffff !important;
+}
+
+/* Logout button */
+header .btn-danger,
+.manager-header .btn-danger,
+.header .btn-danger {
+    background: #dc2626 !important;
+    border: none !important;
+    color: #ffffff !important;
+}
+
+header .btn-danger:hover,
+.manager-header .btn-danger:hover,
+.header .btn-danger:hover {
+    background: #b91c1c !important;
+}
+
+/* Header icons */
+header i,
+.manager-header i,
+.header i {
+    color: inherit;
+}
+
+/* =========================================================
+   FINAL DARK THEME FIX - MANAGER TASKS PAGE
+   ========================================================= */
+
+/* Department Task Completion card */
+.task-completion-card,
+.completion-card,
+.department-completion,
+.task-progress-card {
+    background: #101426 !important;
+    color: #f8fafc !important;
+    border: 1px solid #20263a !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Text inside completion card */
+.task-completion-card *,
+.completion-card *,
+.department-completion *,
+.task-progress-card * {
+    color: inherit;
+}
+
+.task-completion-card .text-muted,
+.completion-card .text-muted,
+.department-completion .text-muted,
+.task-progress-card .text-muted {
+    color: #94a3b8 !important;
+}
+
+/* Completion percentage */
+.task-completion-card .completion-rate,
+.completion-card .completion-rate,
+.department-completion .completion-rate,
+.task-progress-card .completion-rate {
+    color: #60a5fa !important;
+}
+
+/* Completion progress background */
+.task-completion-card .progress,
+.completion-card .progress,
+.department-completion .progress,
+.task-progress-card .progress {
+    background: #20263a !important;
+}
+
+.task-completion-card .progress-bar,
+.completion-card .progress-bar,
+.department-completion .progress-bar,
+.task-progress-card .progress-bar {
+    background: linear-gradient(
+        90deg,
+        #6246ea,
+        #7c5cff
+    ) !important;
+}
+
+
+/* =========================================================
+   TASK FILTER CARD
+   ========================================================= */
+
+.task-filter-card,
+.filter-card,
+.task-filters,
+.filters-card {
+    background: #101426 !important;
+    color: #f8fafc !important;
+    border: 1px solid #20263a !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+
+/* Search input */
+.task-filter-card .form-control,
+.filter-card .form-control,
+.task-filters .form-control,
+.filters-card .form-control {
+    background: #111629 !important;
+    color: #f8fafc !important;
+    border: 1px solid #20263a !important;
+}
+
+.task-filter-card .form-control::placeholder,
+.filter-card .form-control::placeholder,
+.task-filters .form-control::placeholder,
+.filters-card .form-control::placeholder {
+    color: #64748b !important;
+}
+
+
+/* Select boxes */
+.task-filter-card .form-select,
+.filter-card .form-select,
+.task-filters .form-select,
+.filters-card .form-select {
+    background-color: #111629 !important;
+    color: #f8fafc !important;
+    border: 1px solid #20263a !important;
+}
+
+
+/* Search icon area */
+.task-filter-card .input-group-text,
+.filter-card .input-group-text,
+.task-filters .input-group-text,
+.filters-card .input-group-text {
+    background: #111629 !important;
+    color: #60a5fa !important;
+    border: 1px solid #20263a !important;
+}
+
+
+/* =========================================================
+   GENERAL TASK PAGE WHITE CARD OVERRIDE
+   ========================================================= */
+
+.tasks-page .card,
+.task-page .card,
+.manager-tasks .card {
+    background: #101426 !important;
+    color: #f8fafc !important;
+    border-color: #20263a !important;
+}
+
+
+/* =========================================================
+   BOOTSTRAP ROW/COLUMN CARD FIX
+   ========================================================= */
+
+.task-completion-card .card-body,
+.completion-card .card-body,
+.task-filter-card .card-body,
+.filter-card .card-body {
+    background: #101426 !important;
+    color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .task-completion-card,
+    .completion-card,
+    .department-completion,
+    .task-progress-card,
+    .task-filter-card,
+    .filter-card,
+    .task-filters,
+    .filters-card {
+        border-radius: 15px !important;
+    }
+}
+
+/* =========================================================
+   FINAL MANAGER HEADER FIX
+   Keeps header consistent across Team / Tasks / Projects /
+   Performance / Profile pages
+   ========================================================= */
+
+/* Main manager top header */
+.topbar,
+.manager-topbar,
+.manager-header,
+.header-bar,
+.page-topbar {
+    background: #101426 !important;
+    background-color: #101426 !important;
+
+    color: #f8fafc !important;
+
+    border: none !important;
+    border-bottom: 1px solid #20263a !important;
+
+    box-shadow: none !important;
+}
+
+/* Remove any accidental white header background */
+.topbar::before,
+.topbar::after,
+.manager-topbar::before,
+.manager-topbar::after,
+.manager-header::before,
+.manager-header::after {
+    background: transparent !important;
+}
+
+/* Header text */
+.topbar h1,
+.topbar h2,
+.topbar h3,
+.topbar h4,
+.topbar h5,
+.topbar h6,
+.manager-topbar h1,
+.manager-topbar h2,
+.manager-topbar h3,
+.manager-topbar h4,
+.manager-topbar h5,
+.manager-topbar h6,
+.manager-header h1,
+.manager-header h2,
+.manager-header h3,
+.manager-header h4,
+.manager-header h5,
+.manager-header h6 {
+    color: #f8fafc !important;
+}
+
+/* Portal title */
+.portal-title {
+    color: #f8fafc !important;
+}
+
+.portal-title i {
+    color: #60a5fa !important;
+}
+
+/* Manager name */
+.user-area strong {
+    color: #f8fafc !important;
+}
+
+.user-area small,
+.user-area span,
+.user-area div {
+    color: #94a3b8 !important;
+}
+
+/* Manager avatar */
+.avatar {
+    background: linear-gradient(
+        135deg,
+        #6246ea,
+        #7c5cff
+    ) !important;
+
+    color: #ffffff !important;
+
+    border: 1px solid rgba(255,255,255,0.25) !important;
+
+    box-shadow:
+        0 6px 20px rgba(98, 70, 234, 0.30) !important;
+}
+
+/* Header buttons */
+.topbar .btn,
+.manager-topbar .btn,
+.manager-header .btn {
+    color: #f8fafc !important;
+}
+
+/* Home button */
+.topbar .btn-primary,
+.manager-topbar .btn-primary,
+.manager-header .btn-primary {
+    background: #2563eb !important;
+    border-color: #2563eb !important;
+    color: #ffffff !important;
+}
+
+/* Logout button */
+.topbar .btn-danger,
+.manager-topbar .btn-danger,
+.manager-header .btn-danger {
+    background: #dc2626 !important;
+    border-color: #dc2626 !important;
+    color: #ffffff !important;
+}
+
+/* Dark mode button */
+.topbar .btn-light,
+.manager-topbar .btn-light,
+.manager-header .btn-light {
+    background: #151a30 !important;
+    border-color: #303750 !important;
+    color: #f8fafc !important;
+}
+
+/* Dark mode button hover */
+.topbar .btn-light:hover,
+.manager-topbar .btn-light:hover,
+.manager-header .btn-light:hover {
+    background: #20263a !important;
+    border-color: #6246ea !important;
+    color: #ffffff !important;
+}
+
+/* Outline buttons */
+.topbar .btn-outline-primary,
+.manager-topbar .btn-outline-primary,
+.manager-header .btn-outline-primary {
+    background: transparent !important;
+    border-color: #6246ea !important;
+    color: #a78bfa !important;
+}
+
+.topbar .btn-outline-primary:hover,
+.manager-topbar .btn-outline-primary:hover,
+.manager-header .btn-outline-primary:hover {
+    background: #6246ea !important;
+    border-color: #6246ea !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================================
+   PAGE TITLE BAR
+   ========================================================= */
+
+.page-title-bar,
+.manager-page-header,
+.content-header {
+    background: #101426 !important;
+    background-color: #101426 !important;
+
+    color: #f8fafc !important;
+
+    border-bottom: 1px solid #20263a !important;
+}
+
+.page-title-bar h1,
+.page-title-bar h2,
+.page-title-bar h3,
+.manager-page-header h1,
+.manager-page-header h2,
+.manager-page-header h3,
+.content-header h1,
+.content-header h2,
+.content-header h3 {
+    color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   BOOTSTRAP WHITE HEADER OVERRIDE
+   ========================================================= */
+
+header,
+header.bg-white,
+.bg-white.topbar,
+.topbar.bg-white,
+.navbar.bg-white,
+.navbar-light {
+    background: #101426 !important;
+    background-color: #101426 !important;
+
+    color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   HEADER CONTAINER
+   ========================================================= */
+
+.topbar-container,
+.manager-header-container,
+.header-container {
+    background: #101426 !important;
+    background-color: #101426 !important;
+}
+
+
+/* =========================================================
+   IMPORTANT:
+   PREVENT WHITE STRIP ABOVE HEADER
+   ========================================================= */
+
+.main > .bg-white,
+.main > header.bg-white,
+.main > .navbar.bg-white,
+.content > .bg-white:first-child {
+    background: #101426 !important;
+    background-color: #101426 !important;
+
+    color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   FINAL DARK PAGE BACKGROUND
+   ========================================================= */
+
+html,
+body {
+    background: #080b18 !important;
+}
+
+.main,
+.content {
+    background: #080b18 !important;
+}
+/* =========================================================
+   TASK FILTER / SEARCH CONTAINER - DARK MODE
+========================================================= */
+
+.task-filters,
+.task-filter,
+.filter-card,
+.filters-card,
+.search-filter-card,
+.task-search,
+.search-container,
+.filter-container {
+    background: #101426 !important;
+    border: 1px solid #20263a !important;
+    color: #f8fafc !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.20) !important;
+}
+
+/* Search input wrapper */
+.task-filters .input-group,
+.filter-card .input-group,
+.filters-card .input-group,
+.search-filter-card .input-group {
+    background: #101426 !important;
+}
+
+/* Search icon area */
+.task-filters .input-group-text,
+.filter-card .input-group-text,
+.filters-card .input-group-text,
+.search-filter-card .input-group-text {
+    background: #151a30 !important;
+    border-color: #20263a !important;
+    color: #60a5fa !important;
+}
+
+/* Search input */
+.task-filters input,
+.filter-card input,
+.filters-card input,
+.search-filter-card input {
+    background: #151a30 !important;
+    border-color: #20263a !important;
+    color: #f8fafc !important;
+}
+
+.task-filters input::placeholder,
+.filter-card input::placeholder,
+.filters-card input::placeholder,
+.search-filter-card input::placeholder {
+    color: #64748b !important;
+}
+
+/* Select dropdowns */
+.task-filters select,
+.filter-card select,
+.filters-card select,
+.search-filter-card select {
+    background-color: #151a30 !important;
+    border-color: #20263a !important;
+    color: #f8fafc !important;
+}
+
+/* Dropdown options */
+.task-filters select option,
+.filter-card select option,
+.filters-card select option,
+.search-filter-card select option {
+    background: #101426;
+    color: #f8fafc;
+}
+.brand {
+    display: flex;
+    align-items: center;
+    padding: 10px 18px;
+}
+
+/* =====================================================
+   MANAGER BRAND LOGO
+===================================================== */
+
+.brand {
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 18px;
+
+    overflow: visible;
+}
+
+.brand-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    margin: 0;
+
+    /* REMOVE OLD PURPLE BOX */
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    flex-shrink: 0;
+}
+
+.brand-icon img {
+    width: 42px;
+    height: 42px;
+
+    display: block;
+
+    object-fit: contain;
+
+    background: transparent !important;
+}

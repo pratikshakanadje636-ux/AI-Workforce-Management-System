@@ -1,0 +1,1758 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f7fb;
+color:#333;
+}
+
+.container-box{
+background:white;
+border-radius:20px;
+padding:30px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+margin-top:30px;
+}
+
+.page-title{
+font-size:30px;
+font-weight:700;
+margin-bottom:25px;
+}
+
+.card-box{
+background:white;
+border-radius:18px;
+padding:25px;
+box-shadow:0 10px 25px rgba(0,0,0,.06);
+transition:.3s;
+}
+
+.card-box:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 35px rgba(0,0,0,.12);
+}
+
+.btn-primary{
+background:#2563eb;
+border:none;
+border-radius:12px;
+padding:12px 22px;
+}
+
+.btn-success{
+border-radius:12px;
+}
+
+.btn-danger{
+border-radius:12px;
+}
+
+.btn-secondary{
+border-radius:12px;
+}
+
+.form-control,
+.form-select{
+border-radius:12px;
+padding:12px;
+border:1px solid #ddd;
+}
+
+.table{
+border-radius:15px;
+overflow:hidden;
+}
+
+.table thead{
+background:#2563eb;
+color:white;
+}
+
+.table th{
+padding:15px;
+}
+
+.table td{
+padding:15px;
+vertical-align:middle;
+}
+
+.badge{
+padding:8px 14px;
+border-radius:20px;
+}
+
+.dashboard-card{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+.dashboard-number{
+font-size:35px;
+font-weight:700;
+color:#2563eb;
+}
+
+.dashboard-title{
+font-size:15px;
+color:#777;
+}
+
+.ai-card{
+background:linear-gradient(135deg,#2563eb,#60a5fa);
+color:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 15px 30px rgba(37,99,235,.35);
+}
+
+.ai-card h4{
+font-weight:700;
+margin-bottom:10px;
+}
+
+.ai-card p{
+margin-bottom:5px;
+}
+
+.navbar{
+background:white;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.sidebar{
+background:#0f172a;
+min-height:100vh;
+color:white;
+}
+
+.sidebar a{
+display:block;
+padding:14px 20px;
+color:white;
+text-decoration:none;
+transition:.3s;
+}
+
+.sidebar a:hover{
+background:#2563eb;
+padding-left:28px;
+}
+
+.stat-icon{
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#2563eb;
+color:white;
+font-size:22px;
+}
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    width:260px;
+    min-height:100vh;
+    background:#111827;
+    color:white;
+    padding:20px 0;
+    box-shadow:4px 0 20px rgba(0,0,0,.15);
+}
+
+.sidebar h3{
+    font-weight:700;
+}
+
+.sidebar a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#d1d5db;
+    text-decoration:none;
+    padding:15px 25px;
+    margin:8px 12px;
+    border-radius:12px;
+    transition:.3s;
+    font-size:16px;
+    font-weight:500;
+}
+
+.sidebar a:hover{
+    background:#2563eb;
+    color:white;
+    transform:translateX(5px);
+}
+
+.sidebar hr{
+    margin:20px;
+}
+
+.sidebar span{
+    font-size:15px;
+}
+/* ================= NAVBAR ================= */
+
+.navbar{
+    background:#ffffff !important;
+    height:75px;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.navbar .form-control{
+    border-radius:30px;
+    border:none;
+    background:#f3f4f6;
+    padding:12px 20px;
+}
+
+.navbar .form-control:focus{
+    box-shadow:none;
+    background:#eef2ff;
+}
+
+.navbar .btn{
+    width:45px;
+    height:45px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
+    border:none;
+}
+
+.navbar img{
+    border:3px solid #2563eb;
+}
+/* ===========================
+TOP NAVBAR
+=========================== */
+
+.top-navbar{
+height:70px;
+background:#ffffff;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 30px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo{
+font-size:22px;
+font-weight:700;
+color:#2563eb;
+}
+
+.nav-right{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.nav-btn{
+text-decoration:none;
+padding:10px 18px;
+background:#2563eb;
+color:#fff;
+border-radius:10px;
+font-weight:500;
+transition:.3s;
+}
+
+.nav-btn:hover{
+background:#1d4ed8;
+color:#fff;
+}
+
+.logout-btn{
+text-decoration:none;
+padding:10px 18px;
+background:#ef4444;
+color:#fff;
+border-radius:10px;
+font-weight:500;
+transition:.3s;
+}
+
+.logout-btn:hover{
+background:#dc2626;
+color:#fff;
+}
+
+/* =========================================
+   NAVBAR BRAND - PROFESSIONAL DESIGN
+========================================= */
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 300px;
+}
+
+/* AI Logo */
+.navbar-brand .logo,
+.navbar-brand .brand-logo {
+    flex-shrink: 0;
+}
+
+/* Main title */
+.navbar-brand h1,
+.navbar-brand h2,
+.navbar-brand h3,
+.navbar-brand h4,
+.navbar-brand h5,
+.navbar-brand strong {
+    margin: 0;
+    font-weight: 700;
+    color: #172033;
+    letter-spacing: -0.3px;
+}
+
+/* Subtitle */
+.navbar-brand p,
+.navbar-brand small {
+    display: block;
+    margin: 3px 0 0;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* Dark mode */
+body.dark-mode .navbar-brand h1,
+body.dark-mode .navbar-brand h2,
+body.dark-mode .navbar-brand h3,
+body.dark-mode .navbar-brand h4,
+body.dark-mode .navbar-brand h5,
+body.dark-mode .navbar-brand strong {
+    color: #ffffff;
+}
+
+body.dark-mode .navbar-brand p,
+body.dark-mode .navbar-brand small {
+    color: #94a3b8;
+}
+
+/* ==========================================
+TOP NAVIGATION
+========================================== */
+
+.top-navbar{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:#ffffff;
+
+padding:18px 40px;
+
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+}
+
+.logo-section{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.logo-circle{
+
+width:55px;
+
+height:55px;
+
+border-radius:50%;
+
+background:#2563eb;
+
+color:white;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:20px;
+
+font-weight:bold;
+
+}
+
+/* =========================================
+   AI EMPLOYEE RECOMMENDATION - NAVBAR BRAND
+========================================= */
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+/* Main title */
+.logo-text h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #172033;
+    letter-spacing: -0.3px;
+}
+
+/* Subtitle */
+.logo-text small {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: 400;
+    color: #64748b;
+    letter-spacing: 0.1px;
+}
+
+/* Dark mode */
+body.dark-mode .logo-text h4 {
+    color: #ffffff;
+}
+
+body.dark-mode .logo-text small {
+    color: #94a3b8;
+}
+
+.logo-text small{
+
+color:#64748b;
+
+}
+
+.nav-menu{
+
+display:flex;
+
+gap:28px;
+
+list-style:none;
+
+margin:0;
+
+padding:0;
+
+}
+
+.nav-menu a{
+
+text-decoration:none;
+
+color:#334155;
+
+font-weight:500;
+
+transition:.3s;
+
+}
+
+.nav-menu a:hover{
+
+color:#2563eb;
+
+}
+
+.nav-right{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.search-box{
+
+padding:10px 16px;
+
+border-radius:12px;
+
+border:1px solid #ddd;
+
+outline:none;
+
+width:220px;
+
+}
+
+.home-btn{
+
+background:#2563eb;
+
+color:white;
+
+padding:10px 18px;
+
+border-radius:10px;
+
+text-decoration:none;
+
+}
+
+.home-btn:hover{
+
+background:#1d4ed8;
+
+color:white;
+
+}
+
+.logout-btn{
+
+background:#ef4444;
+
+color:white;
+
+padding:10px 18px;
+
+border-radius:10px;
+
+text-decoration:none;
+
+}
+
+.logout-btn:hover{
+
+background:#dc2626;
+
+color:white;
+
+}
+/* ===========================
+DASHBOARD HEADER
+=========================== */
+
+.dashboard-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:35px;
+padding:25px 30px;
+background:#ffffff;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+}
+
+.dashboard-header h2{
+font-size:32px;
+font-weight:700;
+color:#111827;
+margin-bottom:8px;
+}
+
+.dashboard-header p{
+color:#6b7280;
+font-size:15px;
+margin:0;
+}
+
+/* ===========================
+DASHBOARD CARDS
+=========================== */
+
+.dashboard-card{
+display:flex;
+align-items:center;
+gap:18px;
+background:#ffffff;
+padding:28px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+transition:.3s;
+height:100%;
+}
+
+.dashboard-card:hover{
+transform:translateY(-8px);
+box-shadow:0 18px 35px rgba(37,99,235,.12);
+}
+
+.dashboard-content{
+flex:1;
+}
+
+.dashboard-content h6{
+font-size:15px;
+color:#6b7280;
+margin-bottom:8px;
+}
+
+.dashboard-number{
+font-size:34px;
+font-weight:700;
+color:#111827;
+margin-bottom:5px;
+}
+
+.card-text{
+font-size:13px;
+color:#9ca3af;
+margin:0;
+}
+
+/* ===========================
+ICONS
+=========================== */
+
+.card-icon{
+width:65px;
+height:65px;
+border-radius:18px;
+background:#2563eb;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:26px;
+color:#ffffff;
+flex-shrink:0;
+}
+
+.card-icon.green{
+background:#10b981;
+}
+
+.card-icon.orange{
+background:#f59e0b;
+}
+
+.card-icon.red{
+background:#ef4444;
+}
+
+/* ===========================
+AI CARD
+=========================== */
+
+.ai-card{
+height:100%;
+background:linear-gradient(135deg,#2563eb,#3b82f6);
+border-radius:18px;
+padding:28px;
+color:#ffffff;
+box-shadow:0 18px 35px rgba(37,99,235,.25);
+}
+
+.ai-card h1{
+font-size:48px;
+font-weight:700;
+margin:15px 0;
+}
+
+.ai-card hr{
+border-color:rgba(255,255,255,.25);
+}
+
+/* ===========================
+CHART CARD
+=========================== */
+
+.chart-card{
+background:#ffffff;
+padding:28px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+margin-top:25px;
+}
+
+.chart-card h5{
+font-weight:600;
+margin-bottom:20px;
+color:#111827;
+}
+
+/* ===========================
+QUICK ACTIONS
+=========================== */
+
+.quick-card{
+display:block;
+text-decoration:none;
+background:#ffffff;
+padding:25px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+transition:.3s;
+color:#111827;
+height:100%;
+}
+
+.quick-card:hover{
+transform:translateY(-8px);
+color:#2563eb;
+box-shadow:0 18px 35px rgba(37,99,235,.12);
+}
+
+.quick-card i{
+font-size:32px;
+margin-bottom:15px;
+color:#2563eb;
+}
+
+.quick-card h6{
+font-weight:600;
+margin-bottom:6px;
+}
+
+.quick-card p{
+font-size:13px;
+color:#6b7280;
+margin:0;
+}
+
+/* ===========================
+ACTIVITY
+=========================== */
+
+.activity-item{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.activity-icon{
+width:50px;
+height:50px;
+border-radius:50%;
+background:#2563eb;
+display:flex;
+justify-content:center;
+align-items:center;
+color:#fff;
+font-size:18px;
+flex-shrink:0;
+}
+
+.recommend-card{
+background:#f8fafc;
+padding:20px;
+border-radius:15px;
+border:1px solid #e5e7eb;
+text-align:center;
+}
+/* =========================================
+   COMPLETE DARK MODE
+========================================= */
+
+body.dark-mode {
+    background-color: #121212 !important;
+    color: #f5f5f5 !important;
+}
+
+
+/* =========================================
+   TOP NAVBAR
+========================================= */
+
+body.dark-mode .top-navbar,
+body.dark-mode .navbar {
+    background-color: #1b1b1b !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid #333 !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,.4);
+}
+
+body.dark-mode .logo-text h4 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .logo-text small {
+    color: #bdbdbd !important;
+}
+
+body.dark-mode .nav-menu a {
+    color: #e5e7eb !important;
+}
+
+body.dark-mode .nav-menu a:hover {
+    color: #60a5fa !important;
+}
+
+body.dark-mode .search-box,
+body.dark-mode .navbar .form-control {
+    background-color: #2a2a2a !important;
+    color: #ffffff !important;
+    border: 1px solid #444 !important;
+}
+
+body.dark-mode .search-box::placeholder,
+body.dark-mode .navbar .form-control::placeholder {
+    color: #aaa !important;
+}
+
+
+/* =========================================
+   DASHBOARD HEADER
+========================================= */
+
+body.dark-mode .dashboard-header {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+
+body.dark-mode .dashboard-header h2 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .dashboard-header p {
+    color: #bdbdbd !important;
+}
+
+
+/* =========================================
+   DASHBOARD CARDS
+========================================= */
+
+body.dark-mode .dashboard-card,
+body.dark-mode .card-box,
+body.dark-mode .card {
+    background-color: #1e1e1e !important;
+    color: #f5f5f5 !important;
+    border: 1px solid #333 !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+
+/* Card headings */
+
+body.dark-mode .dashboard-content h6,
+body.dark-mode .card-title,
+body.dark-mode .dashboard-title {
+    color: #d1d5db !important;
+}
+
+
+/* BIG NUMBERS */
+
+body.dark-mode .dashboard-number,
+body.dark-mode .card-number {
+    color: #ffffff !important;
+}
+
+
+/* Small text */
+
+body.dark-mode .card-text {
+    color: #bdbdbd !important;
+}
+
+
+/* =========================================
+   AI CARD
+========================================= */
+
+body.dark-mode .ai-card {
+    background: linear-gradient(
+        135deg,
+        #1d4ed8,
+        #2563eb
+    ) !important;
+
+    color: #ffffff !important;
+}
+
+body.dark-mode .ai-card h1,
+body.dark-mode .ai-card h2,
+body.dark-mode .ai-card h3,
+body.dark-mode .ai-card h4,
+body.dark-mode .ai-card h5,
+body.dark-mode .ai-card h6,
+body.dark-mode .ai-card p,
+body.dark-mode .ai-card span {
+    color: #ffffff !important;
+}
+
+
+/* =========================================
+   CHART CARDS
+========================================= */
+
+body.dark-mode .chart-card {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border: 1px solid #333 !important;
+}
+
+body.dark-mode .chart-card h5 {
+    color: #ffffff !important;
+}
+
+
+/* =========================================
+   NORMAL BOOTSTRAP CARDS
+========================================= */
+
+body.dark-mode .card-body {
+    color: #f5f5f5 !important;
+}
+
+body.dark-mode .card h1,
+body.dark-mode .card h2,
+body.dark-mode .card h3,
+body.dark-mode .card h4,
+body.dark-mode .card h5,
+body.dark-mode .card h6,
+body.dark-mode .card p,
+body.dark-mode .card span,
+body.dark-mode .card label {
+    color: #f5f5f5 !important;
+}
+
+
+/* =========================================
+   TABLES
+========================================= */
+
+body.dark-mode .table {
+    color: #f5f5f5 !important;
+    background-color: #1e1e1e !important;
+}
+
+body.dark-mode .table th {
+    color: #ffffff !important;
+    border-color: #444 !important;
+}
+
+body.dark-mode .table td {
+    color: #e5e5e5 !important;
+    border-color: #444 !important;
+}
+
+body.dark-mode .table-hover tbody tr:hover {
+    background-color: #2a2a2a !important;
+}
+
+
+/* =========================================
+   LIST GROUP
+========================================= */
+
+body.dark-mode .list-group-item {
+    background-color: #1e1e1e !important;
+    color: #f5f5f5 !important;
+    border-color: #444 !important;
+}
+
+
+/* =========================================
+   RECOMMENDATION CARD
+========================================= */
+
+body.dark-mode .recommend-card {
+    background-color: #242424 !important;
+    color: #ffffff !important;
+    border-color: #444 !important;
+}
+
+
+/* =========================================
+   QUICK CARDS
+========================================= */
+
+body.dark-mode .quick-card {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border: 1px solid #333 !important;
+}
+
+body.dark-mode .quick-card h6 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .quick-card p {
+    color: #bdbdbd !important;
+}
+
+
+/* =========================================
+   TEXT UTILITIES
+========================================= */
+
+body.dark-mode .text-muted {
+    color: #bdbdbd !important;
+}
+
+body.dark-mode .text-secondary {
+    color: #bdbdbd !important;
+}
+
+
+/* =========================================
+   HR
+========================================= */
+
+body.dark-mode hr {
+    border-color: #444 !important;
+}
+
+
+/* =========================================
+   FORM INPUTS
+========================================= */
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select,
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background-color: #2a2a2a !important;
+    color: #ffffff !important;
+    border-color: #555 !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #aaa !important;
+}
+
+
+/* =========================================
+   PROGRESS BAR BACKGROUND
+========================================= */
+
+body.dark-mode .progress {
+    background-color: #333 !important;
+}
+
+
+/* =========================================
+   DARK MODE BUTTON
+========================================= */
+
+body.dark-mode .btn-dark {
+    background-color: #ffffff !important;
+    color: #111111 !important;
+    border-color: #ffffff !important;
+}
+
+
+/* =========================================
+   LINKS
+========================================= */
+
+body.dark-mode a {
+    color: #7db7ff;
+}
+
+body.dark-mode a:hover {
+    color: #9ed0ff;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+body.dark-mode footer,
+body.dark-mode .footer {
+    background-color: #1b1b1b !important;
+    color: #ffffff !important;
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+body.dark-mode .sidebar {
+    background-color: #0b1120 !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .sidebar a {
+    color: #d1d5db !important;
+}
+
+body.dark-mode .sidebar a:hover {
+    background-color: #2563eb !important;
+    color: #ffffff !important;
+}
+/* =========================================
+   DARK MODE - TABLE FIX
+========================================= */
+
+/* Main table */
+body.dark-mode .table {
+    --bs-table-bg: #1e1e1e !important;
+    --bs-table-color: #f5f5f5 !important;
+    --bs-table-border-color: #444 !important;
+
+    background-color: #1e1e1e !important;
+    color: #f5f5f5 !important;
+}
+
+/* Every table cell */
+body.dark-mode .table > :not(caption) > * > * {
+    background-color: #1e1e1e !important;
+    color: #f5f5f5 !important;
+    border-color: #444 !important;
+}
+
+/* Table header */
+body.dark-mode .table thead th {
+    background-color: #2b2b2b !important;
+    color: #ffffff !important;
+    border-color: #444 !important;
+}
+
+/* Table body */
+body.dark-mode .table tbody td {
+    background-color: #1e1e1e !important;
+    color: #f5f5f5 !important;
+    border-color: #444 !important;
+}
+
+/* Hover */
+body.dark-mode .table-hover tbody tr:hover td {
+    background-color: #2b2b2b !important;
+    color: #ffffff !important;
+}
+
+/* Table links */
+body.dark-mode .table a {
+    color: #7db7ff !important;
+}
+
+
+/* =========================================
+   DARK MODE - CARD BODY FIX
+========================================= */
+
+body.dark-mode .card-body {
+    background-color: #1e1e1e !important;
+    color: #f5f5f5 !important;
+}
+
+
+/* =========================================
+   DARK MODE - LIST FIX
+========================================= */
+
+body.dark-mode .list-group {
+    background-color: #1e1e1e !important;
+}
+
+body.dark-mode .list-group-item {
+    background-color: #1e1e1e !important;
+    color: #f5f5f5 !important;
+    border-color: #444 !important;
+}
+
+
+/* =========================================
+   DARK MODE - TABLE TEXT
+========================================= */
+
+body.dark-mode .table td,
+body.dark-mode .table th {
+    color: #f5f5f5 !important;
+}
+
+
+/* =========================================
+   DARK MODE - DATE / MUTED TEXT
+========================================= */
+
+body.dark-mode .table .text-muted {
+    color: #bdbdbd !important;
+}
+
+/* =========================================================
+   PROFESSIONAL AI WORKFORCE NAVBAR
+========================================================= */
+
+.top-navbar {
+
+    width: 100%;
+
+    min-height: 82px;
+
+    background: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding: 12px 28px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 9999;
+
+}
+
+
+/* =========================================================
+   PROJECT NAME
+========================================================= */
+
+.navbar-brand-area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 285px;
+
+    flex-shrink: 0;
+
+}
+
+
+.logo-circle {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 14px;
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    flex-shrink: 0;
+
+    box-shadow: 0 5px 12px rgba(37, 99, 235, 0.25);
+
+}
+
+
+.logo-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    line-height: 1.2;
+
+}
+
+
+.logo-text h4 {
+
+    margin: 0;
+
+    color: #172033;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+}
+
+
+.logo-text small {
+
+    margin-top: 4px;
+
+    color: #64748b;
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav-menu {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    flex: 1;
+
+}
+
+
+.nav-menu a {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 9px 11px;
+
+    border-radius: 9px;
+
+    color: #475569;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    transition: all 0.2s ease;
+
+}
+
+
+.nav-menu a i {
+
+    font-size: 13px;
+
+}
+
+
+.nav-menu a:hover {
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+}
+
+
+.nav-menu a:first-child {
+
+    background: #eff6ff;
+
+    color: #2563eb;
+
+}
+
+
+/* =========================================================
+   RIGHT ACTIONS
+========================================================= */
+
+.nav-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-shrink: 0;
+
+}
+
+
+/* =========================================================
+   DARK MODE BUTTON
+========================================================= */
+
+.dark-mode-btn {
+
+    width: 40px;
+
+    height: 40px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 9px;
+
+    background: #f8fafc;
+
+    color: #475569;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+}
+
+
+.dark-mode-btn:hover {
+
+    background: #e2e8f0;
+
+    color: #2563eb;
+
+}
+
+
+/* =========================================================
+   HOME BUTTON
+========================================================= */
+
+.home-btn {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 9px 14px;
+
+    background: #2563eb;
+
+    color: #ffffff !important;
+
+    text-decoration: none;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    transition: all 0.2s ease;
+
+}
+
+
+.home-btn:hover {
+
+    background: #1d4ed8;
+
+    color: #ffffff !important;
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================================================
+   LOGOUT BUTTON
+========================================================= */
+
+.logout-btn {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 9px 14px;
+
+    background: #ef4444;
+
+    color: #ffffff !important;
+
+    text-decoration: none;
+
+    border-radius: 9px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    transition: all 0.2s ease;
+
+}
+
+
+.logout-btn:hover {
+
+    background: #dc2626;
+
+    color: #ffffff !important;
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================================================
+   DARK MODE NAVBAR
+========================================================= */
+
+body.dark-mode .top-navbar {
+
+    background: #18181b !important;
+
+    border-bottom: 1px solid #333333;
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+
+}
+
+
+body.dark-mode .logo-text h4 {
+
+    color: #ffffff !important;
+
+}
+
+
+body.dark-mode .logo-text small {
+
+    color: #a1a1aa !important;
+
+}
+
+
+body.dark-mode .nav-menu a {
+
+    color: #d4d4d8 !important;
+
+}
+
+
+body.dark-mode .nav-menu a:hover {
+
+    background: #27272a;
+
+    color: #60a5fa !important;
+
+}
+
+
+body.dark-mode .nav-menu a:first-child {
+
+    background: #1e3a8a;
+
+    color: #93c5fd !important;
+
+}
+
+
+body.dark-mode .dark-mode-btn {
+
+    background: #27272a;
+
+    border-color: #444444;
+
+    color: #facc15;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .top-navbar {
+
+        gap: 12px;
+
+        padding: 12px 18px;
+
+    }
+
+    .navbar-brand-area {
+
+        min-width: 230px;
+
+    }
+
+    .logo-text small {
+
+        display: none;
+
+    }
+
+    .nav-menu {
+
+        gap: 2px;
+
+    }
+
+    .nav-menu a {
+
+        padding: 8px 8px;
+
+        font-size: 12px;
+
+    }
+
+    .nav-menu a i {
+
+        display: none;
+
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    .top-navbar {
+
+        flex-wrap: wrap;
+
+        min-height: auto;
+
+    }
+
+    .navbar-brand-area {
+
+        width: 100%;
+
+    }
+
+    .nav-menu {
+
+        width: 100%;
+
+        justify-content: flex-start;
+
+        overflow-x: auto;
+
+        padding-bottom: 4px;
+
+    }
+
+    .nav-actions {
+
+        position: absolute;
+
+        right: 18px;
+
+        top: 20px;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .nav-menu a {
+
+        font-size: 11px;
+
+    }
+
+    .home-btn,
+
+    .logout-btn {
+
+        padding: 8px 10px;
+
+        font-size: 11px;
+
+    }
+
+}
+/* =========================================================
+   DARK MODE NAVBAR BUTTON
+========================================================= */
+
+.dark-mode-btn {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f8fafc;
+
+    color: #334155;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    transition: all 0.3s ease;
+}
+
+.dark-mode-btn:hover {
+    background: #e2e8f0;
+
+    color: #2563eb;
+
+    transform: translateY(-1px);
+}
+
+
+/* DARK MODE */
+
+body.dark-mode .dark-mode-btn {
+    background: #2a2a2a !important;
+
+    color: #ffffff !important;
+
+    border-color: #444 !important;
+}
+
+body.dark-mode .dark-mode-btn:hover {
+    background: #333 !important;
+
+    color: #60a5fa !important;
+}
+.main-logo {
+    width: 230px;
+    height: auto;
+    object-fit: contain;
+}

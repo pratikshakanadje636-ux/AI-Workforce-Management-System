@@ -1,0 +1,207 @@
+/* =========================================================
+   ADMIN DARK MODE
+   Class used by page_actions.php:
+   admin-dark-mode
+========================================================= */
+
+
+/* =========================
+   BODY
+========================= */
+
+body.admin-dark-mode {
+    background: #0f172a !important;
+    color: #e5e7eb !important;
+}
+
+
+/* =========================
+   COMMON SYSTEM HEADER
+========================= */
+
+body.admin-dark-mode .system-header {
+    background: #1e293b !important;
+    color: #e5e7eb !important;
+    border-color: #334155 !important;
+}
+
+body.admin-dark-mode .system-title strong {
+    color: #f8fafc !important;
+}
+
+body.admin-dark-mode .system-title small {
+    color: #94a3b8 !important;
+}
+
+
+/* =========================
+   EMPLOYEE PAGE CARDS
+========================= */
+
+body.admin-dark-mode .summary-card,
+body.admin-dark-mode .ai-card,
+body.admin-dark-mode .employee-table-card {
+    background: #1e293b !important;
+    color: #e5e7eb !important;
+    border-color: #334155 !important;
+}
+
+
+/* =========================
+   EMPLOYEE TABLE HEADER
+========================= */
+
+body.admin-dark-mode .employee-table-header {
+    background: #1e293b !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+body.admin-dark-mode .employee-table {
+    background: #1e293b !important;
+    color: #e5e7eb !important;
+}
+
+body.admin-dark-mode .employee-table thead th {
+    background: #020617 !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+}
+
+body.admin-dark-mode .employee-table tbody {
+    background: #1e293b !important;
+}
+
+body.admin-dark-mode .employee-table tbody tr {
+    background: #1e293b !important;
+    color: #e5e7eb !important;
+}
+
+body.admin-dark-mode .employee-table tbody td {
+    background: #1e293b !important;
+    color: #e5e7eb !important;
+    border-color: #334155 !important;
+}
+
+body.admin-dark-mode .employee-table tbody tr:hover td {
+    background: #334155 !important;
+}
+
+
+/* =========================
+   EMPLOYEE TEXT
+========================= */
+
+body.admin-dark-mode .employee-name {
+    color: #f8fafc !important;
+}
+
+body.admin-dark-mode .employee-code {
+    color: #94a3b8 !important;
+}
+
+body.admin-dark-mode .summary-label {
+    color: #94a3b8 !important;
+}
+
+
+/* =========================
+   MUTED TEXT
+========================= */
+
+body.admin-dark-mode .text-muted {
+    color: #94a3b8 !important;
+}
+
+
+/* =========================
+   HEADINGS
+========================= */
+
+body.admin-dark-mode h1,
+body.admin-dark-mode h2,
+body.admin-dark-mode h3,
+body.admin-dark-mode h4,
+body.admin-dark-mode h5,
+body.admin-dark-mode h6 {
+    color: #f8fafc;
+}
+
+
+/* =========================
+   PERFORMANCE BAR
+========================= */
+
+body.admin-dark-mode .performance-bar {
+    background: #475569 !important;
+}
+
+
+/* =========================
+   BOOTSTRAP CARDS
+========================= */
+
+body.admin-dark-mode .card {
+    background: #1e293b !important;
+    color: #e5e7eb !important;
+    border-color: #334155 !important;
+}
+
+
+/* =========================
+   FORM CONTROLS
+========================= */
+
+body.admin-dark-mode .form-control,
+body.admin-dark-mode .form-select {
+    background: #1e293b !important;
+    color: #f8fafc !important;
+    border-color: #475569 !important;
+}
+
+body.admin-dark-mode .form-control::placeholder {
+    color: #94a3b8 !important;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+body.admin-dark-mode .modal-content {
+    background: #1e293b !important;
+    color: #e5e7eb !important;
+    border-color: #334155 !important;
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+body.admin-dark-mode .empty-state {
+    color: #94a3b8 !important;
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+body.admin-dark-mode a:not(.btn) {
+    color: #60a5fa;
+}
+
+
+/* =========================
+   DARK MODE BUTTON
+========================= */
+
+#darkModeButton {
+    cursor: pointer;
+}

@@ -1,0 +1,17 @@
+# Local database configuration
+config/database.php
+
+# Temporary/testing files
+generate_password.php
+test_connection.php
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# PHP temporary files
+*.log
+
+# IDE/editor
+.vscode/
+.idea/
