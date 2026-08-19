@@ -36,6 +36,7 @@ $sql = "
         e.employee_code,
         e.designation,
         e.department_id,
+        e.profile_picture,
 
         d.department_name
 
@@ -83,6 +84,10 @@ $manager_name = !empty($manager['full_name'])
 
 $manager_initial = strtoupper(
     substr(trim($manager_name), 0, 1)
+);
+
+$profile_picture = trim(
+    $manager['profile_picture'] ?? ''
 );
 
 $department_id = !empty($manager['department_id'])
@@ -287,6 +292,7 @@ function performanceLevel($score)
 ?>
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -333,11 +339,94 @@ function performanceLevel($score)
         href="manager.css"
     >
 
+
+    <style>
+
+        /* =====================================================
+           MANAGER PROFILE PICTURE
+        ====================================================== */
+
+        .avatar img {
+
+            width: 100%;
+
+            height: 100%;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            display: block;
+
+        }
+
+
+        /* =====================================================
+           SIDEBAR LOGO
+        ====================================================== */
+
+        .brand-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 0 !important;
+
+            margin: 0 !important;
+
+            background: transparent !important;
+
+            background-color: transparent !important;
+
+            border: none !important;
+
+            box-shadow: none !important;
+
+            border-radius: 0 !important;
+
+            font-size: 0;
+
+            flex-shrink: 0;
+
+            overflow: visible;
+
+        }
+
+
+        .brand-icon img {
+
+            width: 38px;
+
+            height: 38px;
+
+            object-fit: contain;
+
+            display: block;
+
+            background: transparent !important;
+
+            border: none !important;
+
+            box-shadow: none !important;
+
+        }
+
+    </style>
+
 </head>
 
 
 <body>
+
 <?php include "../config/page_actions.php"; ?>
+
 
 <!-- =====================================================
      SIDEBAR
@@ -345,30 +434,32 @@ function performanceLevel($score)
 
 <aside class="sidebar">
 
-   <div class="brand">
 
-    <div class="brand-icon">
+    <div class="brand">
 
-        <img
-            src="../assets/images/logo/logo-sidebar.png"
-            alt="AI Workforce"
-        >
+        <div class="brand-icon">
+
+            <img
+                src="../assets/images/logo/logo-sidebar.png"
+                alt="AI Workforce"
+            >
+
+        </div>
+
+
+        <div class="brand-text">
+
+            <h5>
+                AI Workforce
+            </h5>
+
+            <small>
+                Manager Portal
+            </small>
+
+        </div>
 
     </div>
-
-    <div class="brand-text">
-
-        <h5>
-            AI Workforce
-        </h5>
-
-        <small>
-            Manager Portal
-        </small>
-
-    </div>
-
-</div>
 
 
     <a
@@ -504,9 +595,11 @@ function performanceLevel($score)
                 <strong>
 
                     <?php
+
                     echo htmlspecialchars(
                         $manager_name
                     );
+
                     ?>
 
                 </strong>
@@ -526,13 +619,30 @@ function performanceLevel($score)
             </div>
 
 
+            <!-- MANAGER PROFILE AVATAR -->
+
             <div class="avatar">
 
-                <?php
-                echo htmlspecialchars(
-                    $manager_initial
-                );
-                ?>
+                <?php if (!empty($profile_picture)): ?>
+
+                    <img
+                        src="../assets/images/profiles/<?php echo htmlspecialchars($profile_picture, ENT_QUOTES, 'UTF-8'); ?>"
+                        alt="Profile Picture"
+                    >
+
+                <?php else: ?>
+
+                    <?php
+
+                    echo htmlspecialchars(
+                        $manager_initial,
+                        ENT_QUOTES,
+                        'UTF-8'
+                    );
+
+                    ?>
+
+                <?php endif; ?>
 
             </div>
 

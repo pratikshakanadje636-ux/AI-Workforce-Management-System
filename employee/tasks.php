@@ -1,4 +1,3 @@
-```php
 <?php
 
 session_start();
@@ -30,6 +29,7 @@ $sql = "
         employees.employee_id,
         employees.full_name,
         employees.designation,
+        employees.profile_picture,
         departments.department_name
 
     FROM employees
@@ -61,6 +61,11 @@ if ($result->num_rows != 1) {
 $employee = $result->fetch_assoc();
 
 $employee_id = $employee['employee_id'];
+
+$profile_picture =
+    trim(
+        $employee['profile_picture'] ?? ''
+    );
 
 
 /* =========================================================
@@ -507,6 +512,8 @@ body {
 
     justify-content: center;
 
+    overflow: hidden;
+
     background:
         linear-gradient(
             135deg,
@@ -520,6 +527,21 @@ body {
 
     box-shadow:
         0 0 18px rgba(124,58,237,0.25);
+
+}
+
+
+.avatar img {
+
+    width: 100%;
+
+    height: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    display: block;
 
 }
 
@@ -1430,7 +1452,9 @@ footer,
                     <?php
 
                     echo htmlspecialchars(
-                        $employee['full_name']
+                        $employee['full_name'],
+                        ENT_QUOTES,
+                        'UTF-8'
                     );
 
                     ?>
@@ -1448,7 +1472,9 @@ footer,
                     <?php
 
                     echo htmlspecialchars(
-                        $employee['designation']
+                        $employee['designation'] ?? 'Employee',
+                        ENT_QUOTES,
+                        'UTF-8'
                     );
 
                     ?>
@@ -1458,19 +1484,32 @@ footer,
             </div>
 
 
+            <!-- EMPLOYEE PROFILE AVATAR -->
+
             <div class="avatar">
 
-                <?php
+                <?php if (!empty($profile_picture)): ?>
 
-                echo strtoupper(
-                    substr(
-                        $employee['full_name'],
-                        0,
-                        1
-                    )
-                );
+                    <img
+                        src="../assets/images/profiles/<?php echo htmlspecialchars($profile_picture, ENT_QUOTES, 'UTF-8'); ?>"
+                        alt="Profile Picture"
+                    >
 
-                ?>
+                <?php else: ?>
+
+                    <?php
+
+                    echo strtoupper(
+                        substr(
+                            $employee['full_name'],
+                            0,
+                            1
+                        )
+                    );
+
+                    ?>
+
+                <?php endif; ?>
 
             </div>
 
@@ -1703,7 +1742,9 @@ footer,
                     <?php
 
                     echo htmlspecialchars(
-                        $employee['full_name']
+                        $employee['full_name'],
+                        ENT_QUOTES,
+                        'UTF-8'
                     );
 
                     ?>
@@ -1776,7 +1817,9 @@ footer,
                                     <?php
 
                                     echo htmlspecialchars(
-                                        $task['task_title']
+                                        $task['task_title'],
+                                        ENT_QUOTES,
+                                        'UTF-8'
                                     );
 
                                     ?>
@@ -1789,7 +1832,9 @@ footer,
                                     <?php
 
                                     echo htmlspecialchars(
-                                        $task['description']
+                                        $task['description'] ?? '',
+                                        ENT_QUOTES,
+                                        'UTF-8'
                                     );
 
                                     ?>
@@ -1812,7 +1857,9 @@ footer,
 
                                     echo htmlspecialchars(
                                         $task['project_name']
-                                        ?? 'No Project'
+                                        ?? 'No Project',
+                                        ENT_QUOTES,
+                                        'UTF-8'
                                     );
 
                                     ?>
@@ -1874,7 +1921,9 @@ footer,
                                     <?php
 
                                     echo htmlspecialchars(
-                                        $task['priority']
+                                        $task['priority'] ?? 'Medium',
+                                        ENT_QUOTES,
+                                        'UTF-8'
                                     );
 
                                     ?>
@@ -1989,7 +2038,9 @@ footer,
                                     <?php
 
                                     echo htmlspecialchars(
-                                        $task['start_date']
+                                        $task['start_date'] ?? 'Not set',
+                                        ENT_QUOTES,
+                                        'UTF-8'
                                     );
 
                                     ?>
@@ -2009,7 +2060,9 @@ footer,
                                     <?php
 
                                     echo htmlspecialchars(
-                                        $task['due_date']
+                                        $task['due_date'] ?? 'Not set',
+                                        ENT_QUOTES,
+                                        'UTF-8'
                                     );
 
                                     ?>
@@ -2110,4 +2163,3 @@ footer,
 </body>
 
 </html>
-```

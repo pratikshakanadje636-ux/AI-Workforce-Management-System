@@ -1,8 +1,10 @@
+```php
 <?php
 
 session_start();
 
 require_once "../config/database.php";
+
 
 /* ===========================
    MANAGER LOGIN CHECK
@@ -17,6 +19,7 @@ if (
 }
 
 $user_id = $_SESSION['user_id'];
+
 
 /* ===========================
    GET MANAGER PROFILE
@@ -38,6 +41,7 @@ SELECT
     employees.designation,
     employees.department_id,
     employees.joining_date,
+    employees.profile_picture,
 
     departments.department_name
 
@@ -68,6 +72,7 @@ if ($result->num_rows != 1) {
 }
 
 $manager = $result->fetch_assoc();
+
 
 /* ===========================
    BASIC INFORMATION
@@ -115,6 +120,10 @@ $joining_date =
     $manager['joining_date']
     ?: '';
 
+$profile_picture =
+    $manager['profile_picture']
+    ?? '';
+
 ?>
 
 <!DOCTYPE html>
@@ -131,64 +140,221 @@ $joining_date =
 >
 
 <title>
-My Profile | AI Workforce
+    My Profile | AI Workforce
 </title>
+
 
 <!-- Bootstrap -->
 
 <link
-href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    rel="stylesheet"
 >
+
 
 <!-- Bootstrap Icons -->
 
 <link
-rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
 >
 
-<link rel="stylesheet" href="manager.css">
+
+<link
+    rel="stylesheet"
+    href="manager.css"
+>
+
+
+<style>
+
+/* =========================================================
+   PROFILE PICTURE
+========================================================= */
+
+.avatar img {
+
+    width: 100%;
+
+    height: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+.profile-avatar img {
+
+    width: 100%;
+
+    height: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+/* =========================================================
+   PROFILE PICTURE UPLOAD
+========================================================= */
+
+.profile-picture-upload {
+
+    margin-top: 15px;
+
+    max-width: 260px;
+
+}
+
+
+.profile-picture-upload input[type="file"] {
+
+    background: rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.15);
+
+    color: #ffffff;
+
+    border-radius: 10px;
+
+}
+
+
+.profile-picture-upload input[type="file"]::file-selector-button {
+
+    background: #7c3aed;
+
+    color: #ffffff;
+
+    border: none;
+
+    padding: 8px 12px;
+
+    margin-right: 10px;
+
+    border-radius: 7px;
+
+}
+
+
+.profile-picture-upload .upload-btn {
+
+    margin-top: 10px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    padding: 8px 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #4f46e5
+        );
+
+    color: #ffffff;
+
+    font-weight: 600;
+
+}
+
+
+.profile-picture-upload .upload-btn:hover {
+
+    background:
+        linear-gradient(
+            135deg,
+            #8b5cf6,
+            #6366f1
+        );
+
+}
+
+
+/* =========================================================
+   SUCCESS / ERROR
+========================================================= */
+
+.profile-message {
+
+    margin-top: 10px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+}
+
+
+.profile-message.success {
+
+    color: #34d399;
+
+}
+
+
+.profile-message.error {
+
+    color: #f87171;
+
+}
+
+</style>
 
 </head>
 
+
 <body>
-   
+
 <?php include "../config/page_actions.php"; ?>
+
+
 <!-- ===========================
      SIDEBAR
 =========================== -->
 
 <aside class="sidebar">
 
+
+    <!-- BRAND -->
+
     <div class="brand">
 
-    <div class="brand-icon">
+        <div class="brand-icon">
 
-        <img
-            src="../assets/images/logo/logo-sidebar.png"
-            alt="AI Workforce"
-        >
+            <img
+                src="../assets/images/logo/logo-sidebar.png"
+                alt="AI Workforce"
+            >
 
-    </div>
+        </div>
 
-    <div class="brand-text">
+        <div class="brand-text">
 
-        <h5>
-            AI Workforce
-        </h5>
+            <h5>
+                AI Workforce
+            </h5>
 
-        <small>
-            Manager Portal
-        </small>
+            <small>
+                Manager Portal
+            </small>
 
-    </div>
-
-</div>
         </div>
 
     </div>
 
+
+    <!-- DASHBOARD -->
 
     <a
         href="dashboard.php"
@@ -204,6 +370,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
     </a>
 
 
+    <!-- TEAM -->
+
     <a
         href="team.php"
         class="nav-link-custom"
@@ -217,6 +385,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
     </a>
 
+
+    <!-- TASKS -->
 
     <a
         href="tasks.php"
@@ -232,6 +402,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
     </a>
 
 
+    <!-- PERFORMANCE -->
+
     <a
         href="performance.php"
         class="nav-link-custom"
@@ -245,6 +417,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
     </a>
 
+
+    <!-- PROJECTS -->
 
     <a
         href="projects.php"
@@ -260,6 +434,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
     </a>
 
 
+    <!-- PROFILE -->
+
     <a
         href="profile.php"
         class="nav-link-custom active"
@@ -274,8 +450,12 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
     </a>
 
 
+    <!-- SPACER -->
+
     <div style="height: 30%;"></div>
 
+
+    <!-- LOGOUT -->
 
     <a
         href="../authentication/logout.php"
@@ -290,7 +470,9 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
     </a>
 
+
 </aside>
+
 
 
 <!-- ===========================
@@ -304,6 +486,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
     <header class="topbar">
 
+
         <div class="portal-title">
 
             <i class="bi bi-person-badge-fill text-primary"></i>
@@ -315,15 +498,21 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
         <div class="user-area">
 
+
             <div class="text-end d-none d-sm-block">
 
                 <strong>
 
                     <?php
-                    echo htmlspecialchars($manager_name);
+
+                    echo htmlspecialchars(
+                        $manager_name
+                    );
+
                     ?>
 
                 </strong>
+
 
                 <div
                     style="
@@ -331,23 +520,43 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                     color:#64748b;
                     "
                 >
+
                     Manager
+
                 </div>
 
             </div>
 
 
+            <!-- TOP RIGHT AVATAR -->
+
             <div class="avatar">
 
-                <?php
-                echo htmlspecialchars($manager_initial);
-                ?>
+                <?php if (!empty($profile_picture)): ?>
+
+                    <img
+                        src="../assets/images/profiles/<?php echo htmlspecialchars($profile_picture); ?>"
+                        alt="Profile Picture"
+                    >
+
+                <?php else: ?>
+
+                    <?php
+                    echo htmlspecialchars(
+                        $manager_initial
+                    );
+                    ?>
+
+                <?php endif; ?>
 
             </div>
 
+
         </div>
 
+
     </header>
+
 
 
     <!-- CONTENT -->
@@ -362,11 +571,26 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
         <div class="profile-header">
 
 
+            <!-- MAIN PROFILE AVATAR -->
+
             <div class="profile-avatar">
 
-                <?php
-                echo htmlspecialchars($manager_initial);
-                ?>
+                <?php if (!empty($profile_picture)): ?>
+
+                    <img
+                        src="../assets/images/profiles/<?php echo htmlspecialchars($profile_picture); ?>"
+                        alt="Profile Picture"
+                    >
+
+                <?php else: ?>
+
+                    <?php
+                    echo htmlspecialchars(
+                        $manager_initial
+                    );
+                    ?>
+
+                <?php endif; ?>
 
             </div>
 
@@ -376,7 +600,11 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                 <h2>
 
                     <?php
-                    echo htmlspecialchars($manager_name);
+
+                    echo htmlspecialchars(
+                        $manager_name
+                    );
+
                     ?>
 
                 </h2>
@@ -385,7 +613,11 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                 <p>
 
                     <?php
-                    echo htmlspecialchars($manager_email);
+
+                    echo htmlspecialchars(
+                        $manager_email
+                    );
+
                     ?>
 
                 </p>
@@ -399,9 +631,70 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
                 </span>
 
+
+                <!-- PROFILE PICTURE UPLOAD -->
+
+                <form
+                    action="../config/upload_profile_picture.php"
+                    method="POST"
+                    enctype="multipart/form-data"
+                    class="profile-picture-upload"
+                >
+
+                    <input
+                        type="file"
+                        name="profile_picture"
+                        accept="image/jpeg,image/png,image/webp"
+                        class="form-control form-control-sm"
+                        required
+                    >
+
+
+                    <button
+                        type="submit"
+                        class="upload-btn"
+                    >
+
+                        <i class="bi bi-camera"></i>
+
+                        Change Profile Picture
+
+                    </button>
+
+
+                    <?php
+
+                    if (
+                        isset($_GET['success']) &&
+                        $_GET['success'] === 'picture'
+                    ) {
+
+                        echo '
+                        <div class="profile-message success">
+                            Profile picture updated successfully.
+                        </div>';
+
+                    }
+
+
+                    if (isset($_GET['error'])) {
+
+                        echo '
+                        <div class="profile-message error">
+                            Profile picture upload failed.
+                        </div>';
+
+                    }
+
+                    ?>
+
+                </form>
+
             </div>
 
+
         </div>
+
 
 
         <!-- ===========================
@@ -414,6 +707,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
             <!-- PERSONAL INFORMATION -->
 
             <div class="col-lg-7">
+
 
                 <div class="dashboard-card">
 
@@ -453,7 +747,11 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                                 <div class="info-value">
 
                                     <?php
-                                    echo htmlspecialchars($manager_name);
+
+                                    echo htmlspecialchars(
+                                        $manager_name
+                                    );
+
                                     ?>
 
                                 </div>
@@ -461,6 +759,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                             </div>
 
                         </div>
+
 
 
                         <!-- EMAIL -->
@@ -482,7 +781,11 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                                 <div class="info-value">
 
                                     <?php
-                                    echo htmlspecialchars($manager_email);
+
+                                    echo htmlspecialchars(
+                                        $manager_email
+                                    );
+
                                     ?>
 
                                 </div>
@@ -490,6 +793,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                             </div>
 
                         </div>
+
 
 
                         <!-- PHONE -->
@@ -511,7 +815,11 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                                 <div class="info-value">
 
                                     <?php
-                                    echo htmlspecialchars($phone);
+
+                                    echo htmlspecialchars(
+                                        $phone
+                                    );
+
                                     ?>
 
                                 </div>
@@ -519,6 +827,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                             </div>
 
                         </div>
+
 
 
                         <!-- GENDER -->
@@ -540,7 +849,11 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                                 <div class="info-value">
 
                                     <?php
-                                    echo htmlspecialchars($gender);
+
+                                    echo htmlspecialchars(
+                                        $gender
+                                    );
+
                                     ?>
 
                                 </div>
@@ -552,14 +865,18 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
                     </div>
 
+
                 </div>
 
+
             </div>
+
 
 
             <!-- WORK INFORMATION -->
 
             <div class="col-lg-5">
+
 
                 <div class="dashboard-card">
 
@@ -599,7 +916,11 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                                 <div class="info-value">
 
                                     <?php
-                                    echo htmlspecialchars($designation);
+
+                                    echo htmlspecialchars(
+                                        $designation
+                                    );
+
                                     ?>
 
                                 </div>
@@ -607,6 +928,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                             </div>
 
                         </div>
+
 
 
                         <!-- DEPARTMENT -->
@@ -628,7 +950,11 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                                 <div class="info-value">
 
                                     <?php
-                                    echo htmlspecialchars($department);
+
+                                    echo htmlspecialchars(
+                                        $department
+                                    );
+
                                     ?>
 
                                 </div>
@@ -636,6 +962,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                             </div>
 
                         </div>
+
 
 
                         <!-- EMPLOYEE CODE -->
@@ -657,7 +984,11 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                                 <div class="info-value">
 
                                     <?php
-                                    echo htmlspecialchars($employee_code);
+
+                                    echo htmlspecialchars(
+                                        $employee_code
+                                    );
+
                                     ?>
 
                                 </div>
@@ -665,6 +996,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                             </div>
 
                         </div>
+
 
 
                         <!-- JOINING DATE -->
@@ -691,7 +1023,9 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
                                         echo date(
                                             'd M Y',
-                                            strtotime($joining_date)
+                                            strtotime(
+                                                $joining_date
+                                            )
                                         );
 
                                     } else {
@@ -711,12 +1045,15 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
                     </div>
 
+
                 </div>
+
 
             </div>
 
 
         </div>
+
 
 
         <!-- ===========================
@@ -745,6 +1082,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                 <div class="row g-3">
 
 
+                    <!-- ROLE -->
+
                     <div class="col-md-4">
 
                         <div class="account-box">
@@ -764,6 +1103,9 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                     </div>
 
 
+
+                    <!-- EMAIL -->
+
                     <div class="col-md-4">
 
                         <div class="account-box">
@@ -777,7 +1119,11 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                             <p>
 
                                 <?php
-                                echo htmlspecialchars($manager_email);
+
+                                echo htmlspecialchars(
+                                    $manager_email
+                                );
+
                                 ?>
 
                             </p>
@@ -786,6 +1132,9 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
                     </div>
 
+
+
+                    <!-- STATUS -->
 
                     <div class="col-md-4">
 
@@ -801,17 +1150,26 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
                                 <?php
 
-                                if ($manager_status == 'Active') {
+                                if (
+                                    strtolower(
+                                        trim(
+                                            $manager_status
+                                        )
+                                    ) === 'active'
+                                ) {
 
-                                    echo '<span class="status-badge status-active">
-                                            Active
-                                          </span>';
+                                    echo '
+                                    <span class="status-badge status-active">
+                                        Active
+                                    </span>';
 
                                 } else {
 
-                                    echo '<span class="status-badge status-inactive">
-                                            Inactive
-                                          </span>';
+                                    echo '
+                                    <span class="status-badge status-inactive">
+                                        Inactive
+                                    </span>';
+
                                 }
 
                                 ?>
@@ -825,15 +1183,21 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
                 </div>
 
+
             </div>
+
 
         </div>
 
 
+
     </main>
 
+
 </div>
+
 
 </body>
 
 </html>
+```

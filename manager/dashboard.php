@@ -33,6 +33,7 @@ SELECT
     employees.employee_code,
     employees.designation,
     employees.department_id,
+    employees.profile_picture,
     departments.department_name
 
 FROM users
@@ -68,6 +69,8 @@ $manager_name = $manager['full_name'] ?? 'Manager';
 $manager_initial = strtoupper(
     substr($manager_name, 0, 1)
 );
+
+$profile_picture = $manager['profile_picture'] ?? '';
 
 
 /* ===========================
@@ -348,30 +351,109 @@ if ($stmt) {
 >
 
 <title>
-Manager Dashboard | AI Workforce
+    Manager Dashboard | AI Workforce
 </title>
 
 
 <link
-href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    rel="stylesheet"
 >
 
 
 <link
-rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
 >
 
-<link rel="stylesheet" href="manager.css">
+
+<link
+    rel="stylesheet"
+    href="manager.css"
+>
+
+
+<style>
+
+/* =========================================================
+   MANAGER DASHBOARD PROFILE PICTURE
+========================================================= */
+
+.avatar img {
+
+    width: 100%;
+
+    height: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+/* =========================================================
+   SIDEBAR LOGO OVERRIDE
+========================================================= */
+
+.brand-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0 !important;
+
+    margin: 0 !important;
+
+    background: transparent !important;
+
+    background-color: transparent !important;
+
+    border: none !important;
+
+    box-shadow: none !important;
+
+    border-radius: 0 !important;
+
+    font-size: 0;
+
+    flex-shrink: 0;
+
+}
+
+
+.brand-icon img {
+
+    width: 38px;
+
+    height: 38px;
+
+    object-fit: contain;
+
+    display: block;
+
+}
+
+</style>
 
 </head>
 
 
 <body>
-  
+
 
 <?php include "../config/page_actions.php"; ?>
+
+
 <!-- ===========================
      SIDEBAR
 =========================== -->
@@ -379,24 +461,36 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 <aside class="sidebar">
 
 
+    <!-- BRAND -->
+
     <div class="brand">
 
-    <div class="brand-icon">
-        <img
-            src="../assets/images/logo/logo-sidebar.png"
-            alt="AI Workforce"
-        >
+        <div class="brand-icon">
+
+            <img
+                src="../assets/images/logo/logo-sidebar.png"
+                alt="AI Workforce"
+            >
+
+        </div>
+
+
+        <div class="brand-text">
+
+            <h5>
+                AI Workforce
+            </h5>
+
+            <small>
+                Manager Portal
+            </small>
+
+        </div>
+
     </div>
 
-    <div class="brand-text">
-        <h5>AI Workforce</h5>
-        <small>Manager Portal</small>
-    </div>
 
-</div>
-
-    </div>
-
+    <!-- DASHBOARD -->
 
     <a
         href="dashboard.php"
@@ -414,6 +508,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
     </a>
 
 
+    <!-- TEAM -->
+
     <a
         href="team.php"
         class="nav-link-custom"
@@ -429,6 +525,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
     </a>
 
+
+    <!-- TASKS -->
 
     <a
         href="tasks.php"
@@ -446,6 +544,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
     </a>
 
 
+    <!-- PERFORMANCE -->
+
     <a
         href="performance.php"
         class="nav-link-custom"
@@ -462,6 +562,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
     </a>
 
 
+    <!-- PROJECTS -->
+
     <a
         href="projects.php"
         class="nav-link-custom"
@@ -477,6 +579,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
     </a>
 
+
+    <!-- PROFILE -->
 
     <a
         href="profile.php"
@@ -496,6 +600,8 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
     <div style="height: 30%;"></div>
 
+
+    <!-- LOGOUT -->
 
     <a
         href="../authentication/logout.php"
@@ -569,13 +675,28 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
             </div>
 
 
+            <!-- MANAGER PROFILE AVATAR -->
+
             <div class="avatar">
 
-                <?php
+                <?php if (!empty($profile_picture)): ?>
 
-                echo $manager_initial;
+                    <img
+                        src="../assets/images/profiles/<?php echo htmlspecialchars($profile_picture); ?>"
+                        alt="Profile Picture"
+                    >
 
-                ?>
+                <?php else: ?>
+
+                    <?php
+
+                    echo htmlspecialchars(
+                        $manager_initial
+                    );
+
+                    ?>
+
+                <?php endif; ?>
 
             </div>
 
@@ -599,13 +720,16 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
             <h2>
 
                 Welcome back,
+
                 <?php
 
                 echo htmlspecialchars(
                     $manager_name
                 );
 
-                ?> 👋
+                ?>
+
+                👋
 
             </h2>
 
@@ -657,9 +781,12 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                     </div>
 
 
-                    <div class="stat-number" id="totalEmployees">
-                       0
-                     </div>
+                    <div
+                        class="stat-number"
+                        id="totalEmployees"
+                    >
+                        0
+                    </div>
 
 
                     <div class="stat-label">
@@ -687,9 +814,13 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
                     </div>
 
-                    <div class="stat-number" id="totalTasks">
-                          0
-                      </div>
+
+                    <div
+                        class="stat-number"
+                        id="totalTasks"
+                    >
+                        0
+                    </div>
 
 
                     <div class="stat-label">
@@ -718,9 +849,13 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                     </div>
 
 
-                    <div class="stat-number" id="completedTasks">
-                      0
-                      </div>
+                    <div
+                        class="stat-number"
+                        id="completedTasks"
+                    >
+                        0
+                    </div>
+
 
                     <div class="stat-label">
 
@@ -748,9 +883,12 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
                     </div>
 
 
-                    <div class="stat-number" id="pendingTasks">
-                    0
-                   </div>
+                    <div
+                        class="stat-number"
+                        id="pendingTasks"
+                    >
+                        0
+                    </div>
 
 
                     <div class="stat-label">
@@ -1318,6 +1456,7 @@ href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.m
 
 </div>
 
+
 <script>
 
 async function updateManagerDashboard() {
@@ -1331,41 +1470,92 @@ async function updateManagerDashboard() {
         const data = await response.json();
 
         if (!data.success) {
-            console.error("Failed to load dashboard data");
+
+            console.error(
+                "Failed to load dashboard data"
+            );
+
             return;
+
         }
+
 
         /* EMPLOYEES */
 
-        document.getElementById("totalEmployees").textContent =
+        document.getElementById(
+            "totalEmployees"
+        ).textContent =
             data.employees.total;
 
 
         /* TASKS */
 
-        document.getElementById("totalTasks").textContent =
+        document.getElementById(
+            "totalTasks"
+        ).textContent =
             data.tasks.total;
 
-        document.getElementById("completedTasks").textContent =
+        document.getElementById(
+            "completedTasks"
+        ).textContent =
             data.tasks.completed;
 
-        document.getElementById("pendingTasks").textContent =
+        document.getElementById(
+            "pendingTasks"
+        ).textContent =
             data.tasks.pending;
 
-        document.getElementById("inProgressTasks").textContent =
-            data.tasks.in_progress;
+        const inProgressElement =
+            document.getElementById(
+                "inProgressTasks"
+            );
+
+        if (inProgressElement) {
+
+            inProgressElement.textContent =
+                data.tasks.in_progress;
+
+        }
 
 
         /* PROJECTS */
 
-        document.getElementById("totalProjects").textContent =
-            data.projects.total;
+        const totalProjects =
+            document.getElementById(
+                "totalProjects"
+            );
 
-        document.getElementById("activeProjects").textContent =
-            data.projects.active;
+        const activeProjects =
+            document.getElementById(
+                "activeProjects"
+            );
 
-        document.getElementById("completedProjects").textContent =
-            data.projects.completed;
+        const completedProjects =
+            document.getElementById(
+                "completedProjects"
+            );
+
+
+        if (totalProjects) {
+
+            totalProjects.textContent =
+                data.projects.total;
+
+        }
+
+        if (activeProjects) {
+
+            activeProjects.textContent =
+                data.projects.active;
+
+        }
+
+        if (completedProjects) {
+
+            completedProjects.textContent =
+                data.projects.completed;
+
+        }
 
     }
 
@@ -1394,6 +1584,7 @@ setInterval(
 );
 
 </script>
+
 </body>
 
 </html>

@@ -1,3 +1,4 @@
+```php
 <?php
 
 session_start();
@@ -35,6 +36,7 @@ $sql = "
         employees.employee_code,
         employees.designation,
         employees.department_id,
+        employees.profile_picture,
 
         departments.department_name
 
@@ -88,6 +90,10 @@ if ($manager_name === '') {
 
 $manager_initial = strtoupper(
     substr($manager_name, 0, 1)
+);
+
+$profile_picture = trim(
+    $manager['profile_picture'] ?? ''
 );
 
 $department_id = (int) (
@@ -456,23 +462,18 @@ function formatTaskDate($date)
 
     <!-- =====================================================
          TASK PAGE ONLY STYLES
-
-         These styles are intentionally limited to task-page
-         components. Your manager.css remains responsible
-         for the main dashboard/sidebar/topbar theme.
     ====================================================== -->
 
     <style>
 
         .task-toolbar {
-    background: transparent;
-    border-radius: 0;
-    padding: 0;
-    margin-top: 25px;
-    margin-bottom: 20px;
-    box-shadow: none;
-}
-        
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            margin-top: 25px;
+            margin-bottom: 20px;
+            box-shadow: none;
+        }
 
 
         .task-search,
@@ -584,6 +585,83 @@ function formatTaskDate($date)
         }
 
 
+        /* =====================================================
+           MANAGER PROFILE PICTURE
+        ====================================================== */
+
+        .avatar img {
+
+            width: 100%;
+
+            height: 100%;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            display: block;
+
+        }
+
+
+        /* =====================================================
+           SIDEBAR LOGO
+        ====================================================== */
+
+        .brand-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 0 !important;
+
+            margin: 0 !important;
+
+            background: transparent !important;
+
+            background-color: transparent !important;
+
+            border: none !important;
+
+            box-shadow: none !important;
+
+            border-radius: 0 !important;
+
+            font-size: 0;
+
+            flex-shrink: 0;
+
+            overflow: visible;
+
+        }
+
+
+        .brand-icon img {
+
+            width: 38px;
+
+            height: 38px;
+
+            display: block;
+
+            object-fit: contain;
+
+            background: transparent !important;
+
+            border: none !important;
+
+            box-shadow: none !important;
+
+        }
+
+
         @media (max-width: 768px) {
 
             .task-item {
@@ -606,7 +684,9 @@ function formatTaskDate($date)
 
 
 <body>
+
 <?php include "../config/page_actions.php"; ?>
+
 
 <!-- =====================================================
      SIDEBAR
@@ -615,30 +695,34 @@ function formatTaskDate($date)
 <aside class="sidebar">
 
 
-<div class="brand">
+    <div class="brand">
 
-    <div class="brand-icon">
 
-        <img
-            src="../assets/images/logo/logo-sidebar.png"
-            alt="AI Workforce"
-        >
+        <div class="brand-icon">
+
+            <img
+                src="../assets/images/logo/logo-sidebar.png"
+                alt="AI Workforce"
+            >
+
+        </div>
+
+
+        <div class="brand-text">
+
+            <h5>
+                AI Workforce
+            </h5>
+
+            <small>
+                Manager Portal
+            </small>
+
+        </div>
+
 
     </div>
 
-    <div class="brand-text">
-
-        <h5>
-            AI Workforce
-        </h5>
-
-        <small>
-            Manager Portal
-        </small>
-
-    </div>
-
-</div>
 
     <a
         href="dashboard.php"
@@ -740,6 +824,7 @@ function formatTaskDate($date)
 
     </a>
 
+
 </aside>
 
 
@@ -800,18 +885,30 @@ function formatTaskDate($date)
 
             <div class="avatar">
 
-                <?php
-                echo htmlspecialchars(
-                    $manager_initial,
-                    ENT_QUOTES,
-                    'UTF-8'
-                );
-                ?>
+                <?php if (!empty($profile_picture)): ?>
+
+                    <img
+                        src="../assets/images/profiles/<?php echo htmlspecialchars($profile_picture, ENT_QUOTES, 'UTF-8'); ?>"
+                        alt="Profile Picture"
+                    >
+
+                <?php else: ?>
+
+                    <?php
+                    echo htmlspecialchars(
+                        $manager_initial,
+                        ENT_QUOTES,
+                        'UTF-8'
+                    );
+                    ?>
+
+                <?php endif; ?>
 
             </div>
 
 
         </div>
+
 
     </header>
 
@@ -828,6 +925,7 @@ function formatTaskDate($date)
         ================================================== -->
 
         <div class="page-header">
+
 
             <h2>
                 Task Management 📋
@@ -853,6 +951,7 @@ function formatTaskDate($date)
                 ?>
 
             </div>
+
 
         </div>
 
@@ -1057,6 +1156,7 @@ function formatTaskDate($date)
 
                     </div>
 
+
                 </div>
 
 
@@ -1185,6 +1285,7 @@ function formatTaskDate($date)
 
             </div>
 
+
         </div>
 
 
@@ -1250,8 +1351,10 @@ function formatTaskDate($date)
                             );
 
                         if ($employee_name === '') {
+
                             $employee_name =
                                 'Unknown Employee';
+
                         }
 
                         $employee_code =
@@ -1269,8 +1372,10 @@ function formatTaskDate($date)
                             );
 
                         if ($project_name === '') {
+
                             $project_name =
                                 'No Project';
+
                         }
 
                         $task_title =
@@ -1280,8 +1385,10 @@ function formatTaskDate($date)
                             );
 
                         if ($task_title === '') {
+
                             $task_title =
                                 'Untitled Task';
+
                         }
 
                         $overdue =
@@ -1371,17 +1478,14 @@ function formatTaskDate($date)
                                     $priority,
                                     ENT_QUOTES,
                                     'UTF-8'
-                                );
-                            ?>"
+                                ); ?>"
                         >
 
 
                             <div class="task-main">
 
 
-                                <!-- =================================================
-                                     TASK ICON
-                                ================================================== -->
+                                <!-- TASK ICON -->
 
                                 <div class="task-icon">
 
@@ -1418,9 +1522,7 @@ function formatTaskDate($date)
                                 </div>
 
 
-                                <!-- =================================================
-                                     TASK INFORMATION
-                                ================================================== -->
+                                <!-- TASK INFORMATION -->
 
                                 <div class="task-info">
 
@@ -1609,9 +1711,7 @@ function formatTaskDate($date)
                                 </div>
 
 
-                                <!-- =================================================
-                                     EMPLOYEE
-                                ================================================== -->
+                                <!-- EMPLOYEE -->
 
                                 <div class="employee-box">
 
@@ -1685,9 +1785,7 @@ function formatTaskDate($date)
                                 </div>
 
 
-                                <!-- =================================================
-                                     PRIORITY
-                                ================================================== -->
+                                <!-- PRIORITY -->
 
                                 <div>
 
@@ -1715,9 +1813,7 @@ function formatTaskDate($date)
                                 </div>
 
 
-                                <!-- =================================================
-                                     STATUS
-                                ================================================== -->
+                                <!-- STATUS -->
 
                                 <div>
 
@@ -1745,9 +1841,7 @@ function formatTaskDate($date)
                                 </div>
 
 
-                                <!-- =================================================
-                                     DUE DATE
-                                ================================================== -->
+                                <!-- DUE DATE -->
 
                                 <div class="date-box">
 
@@ -1799,9 +1893,7 @@ function formatTaskDate($date)
                     <?php endforeach; ?>
 
 
-                    <!-- =================================================
-                         NO SEARCH RESULTS
-                    ================================================== -->
+                    <!-- NO SEARCH RESULTS -->
 
                     <div
                         id="noSearchResults"
@@ -1824,15 +1916,14 @@ function formatTaskDate($date)
                             or filters.
                         </p>
 
+
                     </div>
 
 
                 <?php else: ?>
 
 
-                    <!-- =================================================
-                         EMPTY STATE
-                    ================================================== -->
+                    <!-- EMPTY STATE -->
 
                     <div class="empty-state">
 
@@ -1868,6 +1959,7 @@ function formatTaskDate($date)
 
             </div>
 
+
         </div>
 
 
@@ -1893,6 +1985,7 @@ function formatTaskDate($date)
 
 
     </main>
+
 
 </div>
 
@@ -2092,3 +2185,4 @@ if (priorityFilter) {
 </body>
 
 </html>
+```

@@ -1,3 +1,4 @@
+```php
 <?php
 
 session_start();
@@ -35,6 +36,7 @@ SELECT
     employees.employee_code,
     employees.designation,
     employees.department_id,
+    employees.profile_picture,
 
     departments.department_name
 
@@ -72,6 +74,11 @@ $manager_name = $manager['full_name'] ?? 'Manager';
 $manager_initial = strtoupper(
     substr($manager_name, 0, 1)
 );
+
+$profile_picture =
+    trim(
+        $manager['profile_picture'] ?? ''
+    );
 
 $department_name =
     $manager['department_name'] ?? 'Department';
@@ -123,10 +130,86 @@ $department_name =
         href="manager.css"
     >
 
+
+    <style>
+
+        /* =====================================================
+           MANAGER PROFILE PICTURE
+        ====================================================== */
+
+        .avatar img {
+
+            width: 100%;
+
+            height: 100%;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            display: block;
+
+        }
+
+
+        /* =====================================================
+           SIDEBAR LOGO
+        ====================================================== */
+
+        .brand-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 0 !important;
+
+            margin: 0 !important;
+
+            background: transparent !important;
+
+            background-color: transparent !important;
+
+            border: none !important;
+
+            box-shadow: none !important;
+
+            border-radius: 0 !important;
+
+            font-size: 0;
+
+            flex-shrink: 0;
+
+            overflow: visible;
+
+        }
+
+
+        .brand-icon img {
+
+            width: 38px;
+
+            height: 38px;
+
+            object-fit: contain;
+
+            display: block;
+
+        }
+
+    </style>
+
 </head>
 
 
 <body>
+
 
 <!-- =========================================================
      SIDEBAR
@@ -137,28 +220,30 @@ $department_name =
 
     <div class="brand">
 
-    <div class="brand-icon">
 
-        <img
-            src="../assets/images/logo/logo-sidebar.png"
-            alt="AI Workforce"
-        >
+        <div class="brand-icon">
 
-    </div>
+            <img
+                src="../assets/images/logo/logo-sidebar.png"
+                alt="AI Workforce"
+            >
 
-    <div class="brand-text">
+        </div>
 
-        <h5>
-            AI Workforce
-        </h5>
 
-        <small>
-            Manager Portal
-        </small>
+        <div class="brand-text">
 
-    </div>
+            <h5>
+                AI Workforce
+            </h5>
 
-</div>
+
+            <small>
+                Manager Portal
+            </small>
+
+        </div>
+
 
     </div>
 
@@ -173,7 +258,9 @@ $department_name =
         <i class="bi bi-grid-1x2-fill"></i>
 
         <span class="nav-text">
+
             Dashboard
+
         </span>
 
     </a>
@@ -189,7 +276,9 @@ $department_name =
         <i class="bi bi-people-fill"></i>
 
         <span class="nav-text">
+
             My Team
+
         </span>
 
     </a>
@@ -205,7 +294,9 @@ $department_name =
         <i class="bi bi-list-task"></i>
 
         <span class="nav-text">
+
             Tasks
+
         </span>
 
     </a>
@@ -221,7 +312,9 @@ $department_name =
         <i class="bi bi-bar-chart-fill"></i>
 
         <span class="nav-text">
+
             Performance
+
         </span>
 
     </a>
@@ -237,7 +330,9 @@ $department_name =
         <i class="bi bi-kanban-fill"></i>
 
         <span class="nav-text">
+
             Projects
+
         </span>
 
     </a>
@@ -253,7 +348,9 @@ $department_name =
         <i class="bi bi-person-fill"></i>
 
         <span class="nav-text">
+
             My Profile
+
         </span>
 
     </a>
@@ -274,7 +371,9 @@ $department_name =
         <i class="bi bi-box-arrow-right"></i>
 
         <span class="nav-text">
+
             Logout
+
         </span>
 
     </a>
@@ -321,7 +420,9 @@ $department_name =
                     <?php
 
                     echo htmlspecialchars(
-                        $manager_name
+                        $manager_name,
+                        ENT_QUOTES,
+                        'UTF-8'
                     );
 
                     ?>
@@ -343,17 +444,30 @@ $department_name =
             </div>
 
 
-            <!-- AVATAR -->
+            <!-- PROFILE AVATAR -->
 
             <div class="avatar">
 
-                <?php
+                <?php if (!empty($profile_picture)): ?>
 
-                echo htmlspecialchars(
-                    $manager_initial
-                );
+                    <img
+                        src="../assets/images/profiles/<?php echo htmlspecialchars($profile_picture, ENT_QUOTES, 'UTF-8'); ?>"
+                        alt="Profile Picture"
+                    >
 
-                ?>
+                <?php else: ?>
+
+                    <?php
+
+                    echo htmlspecialchars(
+                        $manager_initial,
+                        ENT_QUOTES,
+                        'UTF-8'
+                    );
+
+                    ?>
+
+                <?php endif; ?>
 
             </div>
 
@@ -427,7 +541,9 @@ $department_name =
                         <?php
 
                         echo htmlspecialchars(
-                            $department_name
+                            $department_name,
+                            ENT_QUOTES,
+                            'UTF-8'
                         );
 
                         ?>
@@ -481,7 +597,7 @@ $department_name =
                 <i class="bi bi-clock-history me-1"></i>
 
                 Last updated:
-                
+
                 <span id="lastUpdated">
                     Loading...
                 </span>
@@ -630,7 +746,6 @@ $department_name =
 
 <script>
 
-
 /* =========================================================
    GLOBAL STATE
 ========================================================= */
@@ -638,7 +753,6 @@ $department_name =
 let isLoading = false;
 
 let firstLoad = true;
-
 
 
 /* =========================================================
@@ -933,7 +1047,6 @@ async function loadTeam() {
 }
 
 
-
 /* =========================================================
    CREATE TEAM CARD
 ========================================================= */
@@ -1043,7 +1156,6 @@ function createTeamCard(member) {
     }
 
 
-
     /* =====================================================
        JOINING DATE
     ===================================================== */
@@ -1052,7 +1164,6 @@ function createTeamCard(member) {
         member.joining_date
             ? formatDate(member.joining_date)
             : "Not available";
-
 
 
     /* =====================================================
@@ -1308,7 +1419,6 @@ function createTeamCard(member) {
 }
 
 
-
 /* =========================================================
    DATE FORMAT
 ========================================================= */
@@ -1343,7 +1453,6 @@ function formatDate(dateString) {
     );
 
 }
-
 
 
 /* =========================================================
@@ -1382,13 +1491,11 @@ function escapeHtml(value) {
 }
 
 
-
 /* =========================================================
    INITIAL LOAD
 ========================================================= */
 
 loadTeam();
-
 
 
 /* =========================================================
@@ -1408,3 +1515,4 @@ setInterval(
 </body>
 
 </html>
+```

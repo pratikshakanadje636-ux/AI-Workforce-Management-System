@@ -32,8 +32,9 @@ SELECT
     employees.designation,
     employees.phone,
     employees.performance_score,
-    employees.workload,
-    departments.department_name
+employees.workload,
+employees.profile_picture,
+departments.department_name
 
 FROM employees
 
@@ -56,7 +57,7 @@ if ($employee_result->num_rows != 1) {
 $employee = $employee_result->fetch_assoc();
 
 $employee_id = $employee['employee_id'];
-
+$profile_picture = $employee['profile_picture'] ?? '';
 
 /* ===========================
    TASK SUMMARY
@@ -268,6 +269,7 @@ body {
 
 
 .brand-icon {
+    
     width: 45px;
     height: 45px;
 
@@ -427,7 +429,21 @@ body {
     font-weight: 700;
 
 }
+.avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
 
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    object-fit: cover;
+    display: block;
+}
 
 /* ===========================
    CONTENT
@@ -1653,21 +1669,28 @@ a {
 
             <div class="avatar">
 
-                <?php
+    <?php if (!empty($profile_picture)): ?>
 
-                echo strtoupper(
-                    substr(
-                        $employee['full_name'],
-                        0,
-                        1
-                    )
-                );
+        <img
+            src="../assets/images/profiles/<?php echo htmlspecialchars($profile_picture); ?>"
+            alt="Profile Picture"
+        >
 
-                ?>
+    <?php else: ?>
 
-            </div>
+        <?php
+        echo strtoupper(
+            substr(
+                $employee['full_name'],
+                0,
+                1
+            )
+        );
+        ?>
 
-        </div>
+    <?php endif; ?>
+
+</div>
 
     </header>
 
@@ -1864,22 +1887,30 @@ a {
 
 
                         <div class="profile-top">
+<div class="profile-avatar">
 
-                            <div class="profile-avatar">
+    <?php if (!empty($profile_picture)): ?>
 
-                                <?php
+        <img
+            src="../assets/images/profiles/<?php echo htmlspecialchars($profile_picture); ?>"
+            alt="Profile Picture"
+        >
 
-                                echo strtoupper(
-                                    substr(
-                                        $employee['full_name'],
-                                        0,
-                                        1
-                                    )
-                                );
+    <?php else: ?>
 
-                                ?>
+        <?php
+        echo strtoupper(
+            substr(
+                $employee['full_name'],
+                0,
+                1
+            )
+        );
+        ?>
 
-                            </div>
+    <?php endif; ?>
+
+</div>
 
 
                             <div>

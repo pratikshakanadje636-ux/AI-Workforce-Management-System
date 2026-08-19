@@ -7,7 +7,7 @@ require_once "../config/database.php";
 
 /* =========================================================
    EMPLOYEE LOGIN CHECK
-   ========================================================= */
+========================================================= */
 
 if (
     !isset($_SESSION['user_id']) ||
@@ -22,7 +22,7 @@ $user_id = $_SESSION['user_id'];
 
 /* =========================================================
    GET EMPLOYEE PROFILE
-   ========================================================= */
+========================================================= */
 
 $sql = "
     SELECT
@@ -40,6 +40,7 @@ $sql = "
         employees.performance_score,
         employees.workload,
         employees.completed_projects,
+        employees.profile_picture,
         departments.department_name,
         users.email,
         users.status AS account_status
@@ -73,10 +74,14 @@ if ($result->num_rows !== 1) {
 
 $employee = $result->fetch_assoc();
 
+$profile_picture =
+    $employee['profile_picture']
+    ?? '';
+
 
 /* =========================================================
    INITIAL
-   ========================================================= */
+========================================================= */
 
 $initial = strtoupper(
     substr(
@@ -89,7 +94,7 @@ $initial = strtoupper(
 
 /* =========================================================
    PERFORMANCE SCORE
-   ========================================================= */
+========================================================= */
 
 $performance_score =
     (float)($employee['performance_score'] ?? 0);
@@ -105,7 +110,7 @@ $performance_score = min(
 
 /* =========================================================
    ACCOUNT STATUS
-   ========================================================= */
+========================================================= */
 
 $account_status =
     strtolower(
@@ -232,57 +237,66 @@ body {
     padding: 10px 12px 30px;
 
     border-bottom:
-        1px solid rgba(255,255,255,0.08);
+        1px solid rgba(255,255,255,0.12);
 
     margin-bottom: 25px;
 
-}
-
-
-.brand {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 10px 12px 30px;
-
-    border-bottom:
-    1px solid rgba(255,255,255,0.12);
-
-    margin-bottom: 25px;
 }
 
 
 .brand-icon {
-    
+
     width: 45px;
+
     height: 45px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    border-radius: 0;
+    padding: 0 !important;
+
+    margin: 0 !important;
 
     background: transparent !important;
 
-    padding: 0;
+    background-color: transparent !important;
+
+    border: none !important;
+
+    box-shadow: none !important;
+
+    border-radius: 0 !important;
+
+    font-size: 0;
 
     flex-shrink: 0;
+
+    overflow: visible;
+
 }
 
+
 .brand-icon img {
+
     width: 38px;
+
     height: 38px;
 
     object-fit: contain;
 
     display: block;
+
+    background: transparent !important;
+
+    border: none !important;
+
+    box-shadow: none !important;
+
 }
+
 
 .brand h5 {
 
@@ -367,7 +381,7 @@ body {
 
 /* =========================================================
    MAIN
-   ========================================================= */
+========================================================= */
 
 .main {
 
@@ -382,7 +396,7 @@ body {
 
 /* =========================================================
    TOPBAR
-   ========================================================= */
+========================================================= */
 
 .topbar {
 
@@ -470,6 +484,8 @@ body {
 
     justify-content: center;
 
+    overflow: hidden;
+
     background:
         linear-gradient(
             135deg,
@@ -487,9 +503,24 @@ body {
 }
 
 
+.avatar-small img {
+
+    width: 100%;
+
+    height: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
 /* =========================================================
    CONTENT
-   ========================================================= */
+========================================================= */
 
 .content {
 
@@ -500,7 +531,7 @@ body {
 
 /* =========================================================
    PAGE HEADER
-   ========================================================= */
+========================================================= */
 
 .page-header {
 
@@ -531,7 +562,7 @@ body {
 
 /* =========================================================
    PROFILE HERO
-   ========================================================= */
+========================================================= */
 
 .profile-hero {
 
@@ -616,7 +647,7 @@ body {
 
 /* =========================================================
    PROFILE AVATAR
-   ========================================================= */
+========================================================= */
 
 .profile-avatar {
 
@@ -651,6 +682,23 @@ body {
     border:
         5px solid rgba(255,255,255,0.18);
 
+    overflow: hidden;
+
+}
+
+
+.profile-avatar img {
+
+    width: 100%;
+
+    height: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    display: block;
+
 }
 
 
@@ -674,7 +722,7 @@ body {
 
 /* =========================================================
    STATUS BADGES
-   ========================================================= */
+========================================================= */
 
 .status-active {
 
@@ -732,7 +780,7 @@ body {
 
 /* =========================================================
    HERO SCORE
-   ========================================================= */
+========================================================= */
 
 .hero-score-label {
 
@@ -756,7 +804,7 @@ body {
 
 /* =========================================================
    PROFILE CARDS
-   ========================================================= */
+========================================================= */
 
 .profile-card {
 
@@ -819,7 +867,7 @@ body {
 
 /* =========================================================
    INFORMATION ROWS
-   ========================================================= */
+========================================================= */
 
 .info-row {
 
@@ -883,7 +931,7 @@ body {
 
 /* =========================================================
    PERFORMANCE
-   ========================================================= */
+========================================================= */
 
 .score-box {
 
@@ -940,7 +988,7 @@ body {
 
 /* =========================================================
    BUTTON
-   ========================================================= */
+========================================================= */
 
 .btn-outline-primary {
 
@@ -978,7 +1026,7 @@ body {
 
 /* =========================================================
    TEXT
-   ========================================================= */
+========================================================= */
 
 .text-muted {
 
@@ -996,7 +1044,7 @@ body {
 
 /* =========================================================
    SCROLLBAR
-   ========================================================= */
+========================================================= */
 
 ::-webkit-scrollbar {
 
@@ -1030,7 +1078,7 @@ body {
 
 /* =========================================================
    TABLET
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 991px) {
 
@@ -1076,7 +1124,7 @@ body {
 
 /* =========================================================
    MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 767px) {
 
@@ -1157,35 +1205,41 @@ body {
 
 
 <body>
+
 <?php include "../config/page_actions.php"; ?>
+
 
 <!-- =====================================================
      SIDEBAR
-     ===================================================== -->
+===================================================== -->
 
 <aside class="sidebar">
 
 
-     <div class="brand">
+    <div class="brand">
 
-    <div class="brand-icon">
+        <div class="brand-icon">
 
-        <img
-            src="../assets/images/logo/logo-sidebar.png"
-            alt="AI Workforce"
-        >
+            <img
+                src="../assets/images/logo/logo-sidebar.png"
+                alt="AI Workforce"
+            >
 
-    </div>
+        </div>
 
-    <div class="brand-text">
 
-        <h5>AI Workforce</h5>
+        <div class="brand-text">
 
-        <small>Employee Portal</small>
+            <h5>
+                AI Workforce
+            </h5>
 
-    </div>
+            <small>
+                Employee Portal
+            </small>
 
-</div>
+        </div>
+
     </div>
 
 
@@ -1271,14 +1325,13 @@ body {
 
     </a>
 
-
 </aside>
 
 
 
 <!-- =====================================================
      MAIN
-     ===================================================== -->
+===================================================== -->
 
 <div class="main">
 
@@ -1321,6 +1374,7 @@ body {
 
                     echo htmlspecialchars(
                         $employee['designation']
+                        ?? 'Employee'
                     );
 
                     ?>
@@ -1330,13 +1384,30 @@ body {
             </div>
 
 
+            <!-- TOPBAR PROFILE PICTURE -->
+
             <div class="avatar-small">
 
-                <?php
+                <?php if (!empty($profile_picture)): ?>
 
-                echo $initial;
+                    <img
+                        src="../assets/images/profiles/<?php echo htmlspecialchars($profile_picture, ENT_QUOTES, 'UTF-8'); ?>"
+                        alt="Profile Picture"
+                    >
 
-                ?>
+                <?php else: ?>
+
+                    <?php
+
+                    echo htmlspecialchars(
+                        $initial,
+                        ENT_QUOTES,
+                        'UTF-8'
+                    );
+
+                    ?>
+
+                <?php endif; ?>
 
             </div>
 
@@ -1376,7 +1447,7 @@ body {
 
         <!-- =================================================
              PROFILE HERO
-             ================================================= -->
+        ================================================= -->
 
         <div class="profile-hero">
 
@@ -1388,15 +1459,54 @@ body {
 
                 <div class="col-md-2 text-center text-md-start">
 
+
                     <div class="profile-avatar">
 
-                        <?php
+                        <?php if (!empty($profile_picture)): ?>
 
-                        echo $initial;
+                            <img
+                                src="../assets/images/profiles/<?php echo htmlspecialchars($profile_picture, ENT_QUOTES, 'UTF-8'); ?>"
+                                alt="Profile Picture"
+                            >
 
-                        ?>
+                        <?php else: ?>
+
+                            <?php echo $initial; ?>
+
+                        <?php endif; ?>
 
                     </div>
+
+
+                    <form
+                        action="../config/upload_profile_picture.php"
+                        method="POST"
+                        enctype="multipart/form-data"
+                        class="mt-3"
+                    >
+
+                        <input
+                            type="file"
+                            name="profile_picture"
+                            accept="image/jpeg,image/png,image/webp"
+                            class="form-control form-control-sm"
+                            required
+                        >
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-light btn-sm mt-2"
+                        >
+
+                            <i class="bi bi-camera"></i>
+
+                            Change Profile Picture
+
+                        </button>
+
+                    </form>
+
 
                 </div>
 
@@ -1475,11 +1585,6 @@ body {
 
                     <?php
 
-                    ?>
-
-
-                    <?php
-
                     }
 
                     ?>
@@ -1530,7 +1635,7 @@ body {
 
         <!-- =================================================
              INFORMATION CARDS
-             ================================================= -->
+        ================================================= -->
 
         <div class="row g-4">
 
@@ -1979,7 +2084,7 @@ body {
 
         <!-- =================================================
              PERFORMANCE OVERVIEW
-             ================================================= -->
+        ================================================= -->
 
         <div class="profile-card mt-4">
 
@@ -2068,7 +2173,7 @@ body {
 
         <!-- =================================================
              ADDITIONAL WORK SUMMARY
-             ================================================= -->
+        ================================================= -->
 
         <div class="row g-4 mt-1">
 
