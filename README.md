@@ -679,7 +679,7 @@ The main goals of the project are to:
 
 # 👩‍💻 Developer
 
-**Pratiksha Kanadje**
+**Pratiksha Kamalakar Kanadje**
 
 Bachelor of Computer Science
 Deogiri Institute of technology and management studies,chhatrapati sambhajinagar
