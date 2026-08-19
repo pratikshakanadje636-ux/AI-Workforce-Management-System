@@ -682,7 +682,8 @@ The main goals of the project are to:
 **Pratiksha Kanadje**
 
 Bachelor of Computer Science
-Deogiri College / Dr. Babasaheb Ambedkar Marathwada University
+Deogiri Institute of technology and management studies,chhatrapati sambhajinagar
+/ Dr. Babasaheb Ambedkar Marathwada University
 
 ---
 
