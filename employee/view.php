@@ -1,10 +1,11 @@
+
 <?php
 
 require_once "../config/database.php";
 
-/* =========================================================
-   FETCH EMPLOYEES
-========================================================= */
+// =============================
+// FETCH EMPLOYEES
+// =============================
 
 $sql = "
 SELECT
@@ -62,9 +63,9 @@ ORDER BY
 $result = $conn->query($sql);
 
 
-/* =========================================================
-   TOP PERFORMER
-========================================================= */
+// =============================
+// TOP PERFORMER
+// =============================
 
 $top = $conn->query("
     SELECT
@@ -111,7 +112,8 @@ $top = $conn->query("
     LEFT JOIN tasks
         ON employees.employee_id = tasks.employee_id
 
-    GROUP BY employees.employee_id
+    GROUP BY
+        employees.employee_id
 
     ORDER BY
         performance DESC,
@@ -127,9 +129,9 @@ if ($top && $top->num_rows > 0) {
 }
 
 
-/* =========================================================
-   SUMMARY
-========================================================= */
+// =============================
+// SUMMARY
+// =============================
 
 $total_employees = 0;
 $total_tasks = 0;
@@ -137,7 +139,7 @@ $total_completed = 0;
 $avg_performance = 0;
 
 
-/* Total employees */
+// Total employees
 
 $query = $conn->query("
     SELECT COUNT(*) AS total
@@ -149,7 +151,7 @@ if ($query) {
 }
 
 
-/* Total tasks */
+// Total tasks
 
 $query = $conn->query("
     SELECT COUNT(*) AS total
@@ -161,7 +163,7 @@ if ($query) {
 }
 
 
-/* Completed tasks */
+// Completed tasks
 
 $query = $conn->query("
     SELECT COUNT(*) AS total
@@ -174,7 +176,7 @@ if ($query) {
 }
 
 
-/* Average performance */
+// Average performance
 
 $query = $conn->query("
     SELECT
@@ -218,9 +220,9 @@ if ($query) {
 }
 
 
-/* =========================================================
-   SAFE OUTPUT
-========================================================= */
+// =============================
+// SAFE OUTPUT
+// =============================
 
 function e($value)
 {
@@ -246,7 +248,9 @@ function e($value)
     content="width=device-width, initial-scale=1.0"
 >
 
-<title>Employee Management | AI Workforce Management</title>
+<title>
+    Employee Management | AI Workforce Management
+</title>
 
 
 <!-- Bootstrap -->
@@ -269,11 +273,16 @@ function e($value)
 
 <link
     rel="stylesheet"
-    href="../assets/css/style.css">
-<link
-    rel="stylesheet" 
-    href="../assets/css/dark-mode.css">
+    href="../assets/css/style.css"
+>
 
+
+<!-- CORRECT DARK MODE FILE -->
+
+<link
+    rel="stylesheet"
+    href="../assets/css/dark mode.css"
+>
 
 
 <style>
@@ -283,8 +292,11 @@ function e($value)
 ========================================================= */
 
 body {
+
     background: #f4f7fb;
+
     color: #1f2937;
+
 }
 
 
@@ -293,7 +305,9 @@ body {
 ========================================================= */
 
 .employee-page {
+
     padding: 35px 25px 60px;
+
 }
 
 
@@ -302,11 +316,13 @@ body {
 ========================================================= */
 
 .page-header {
-    background: linear-gradient(
-        135deg,
-        #0d6efd,
-        #6610f2
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd,
+            #6610f2
+        );
 
     color: white;
 
@@ -318,16 +334,25 @@ body {
 
     box-shadow:
         0 12px 30px rgba(13, 110, 253, 0.20);
+
 }
+
 
 .page-header h1 {
+
     font-weight: 700;
+
     margin-bottom: 8px;
+
 }
 
+
 .page-header p {
+
     margin-bottom: 0;
+
     opacity: 0.9;
+
 }
 
 
@@ -336,7 +361,9 @@ body {
 ========================================================= */
 
 .btn-add-employee {
+
     background: white;
+
     color: #0d6efd;
 
     font-weight: 700;
@@ -348,13 +375,18 @@ body {
     border-radius: 12px;
 
     transition: 0.2s;
+
 }
 
+
 .btn-add-employee:hover {
+
     background: #f0f6ff;
+
     color: #084298;
 
     transform: translateY(-2px);
+
 }
 
 
@@ -363,6 +395,7 @@ body {
 ========================================================= */
 
 .summary-card {
+
     border: none;
 
     border-radius: 18px;
@@ -375,42 +408,58 @@ body {
     transition: 0.25s;
 
     height: 100%;
+
 }
 
+
 .summary-card:hover {
+
     transform: translateY(-4px);
 
     box-shadow:
         0 12px 30px rgba(0, 0, 0, 0.10);
+
 }
 
+
 .summary-icon {
+
     width: 50px;
+
     height: 50px;
 
     border-radius: 14px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     font-size: 22px;
+
 }
 
+
 .summary-number {
+
     font-size: 28px;
 
     font-weight: 700;
 
     margin-top: 12px;
+
 }
 
+
 .summary-label {
+
     color: #6b7280;
 
     font-size: 14px;
 
     margin: 0;
+
 }
 
 
@@ -419,6 +468,7 @@ body {
 ========================================================= */
 
 .ai-card {
+
     background: white;
 
     border: none;
@@ -431,12 +481,16 @@ body {
     padding: 25px;
 
     margin-bottom: 25px;
+
 }
 
+
 .ai-title {
+
     font-weight: 700;
 
     color: #6610f2;
+
 }
 
 
@@ -445,6 +499,7 @@ body {
 ========================================================= */
 
 .employee-table-card {
+
     background: white;
 
     border: none;
@@ -455,18 +510,26 @@ body {
         0 8px 25px rgba(0, 0, 0, 0.06);
 
     overflow: hidden;
+
 }
+
 
 .employee-table-header {
+
     padding: 22px 25px;
 
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom:
+        1px solid #e5e7eb;
+
 }
 
+
 .employee-table-header h3 {
+
     margin: 0;
 
     font-weight: 700;
+
 }
 
 
@@ -475,12 +538,16 @@ body {
 ========================================================= */
 
 .employee-table {
+
     margin-bottom: 0;
 
     vertical-align: middle;
+
 }
 
+
 .employee-table thead th {
+
     background: #111827;
 
     color: white;
@@ -492,22 +559,32 @@ body {
     font-size: 13px;
 
     white-space: nowrap;
+
 }
 
+
 .employee-table tbody td {
+
     padding: 15px 12px;
 
     border-color: #edf0f4;
 
     font-size: 14px;
+
 }
+
 
 .employee-table tbody tr {
+
     transition: 0.15s;
+
 }
 
+
 .employee-table tbody tr:hover {
+
     background: #f8fbff;
+
 }
 
 
@@ -516,15 +593,20 @@ body {
 ========================================================= */
 
 .employee-name {
+
     font-weight: 700;
 
     color: #111827;
+
 }
 
+
 .employee-code {
+
     font-size: 12px;
 
     color: #6b7280;
+
 }
 
 
@@ -533,18 +615,25 @@ body {
 ========================================================= */
 
 .performance-wrapper {
+
     min-width: 150px;
+
 }
 
+
 .performance-text {
+
     font-size: 12px;
 
     font-weight: 700;
 
     margin-bottom: 5px;
+
 }
 
+
 .performance-bar {
+
     height: 8px;
 
     border-radius: 10px;
@@ -552,18 +641,23 @@ body {
     background: #e5e7eb;
 
     overflow: hidden;
+
 }
 
+
 .performance-fill {
+
     height: 100%;
 
     border-radius: 10px;
 
-    background: linear-gradient(
-        90deg,
-        #198754,
-        #20c997
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #198754,
+            #20c997
+        );
+
 }
 
 
@@ -572,11 +666,13 @@ body {
 ========================================================= */
 
 .action-btn {
+
     border-radius: 8px;
 
     margin-right: 3px;
 
     font-size: 12px;
+
 }
 
 
@@ -585,41 +681,307 @@ body {
 ========================================================= */
 
 .empty-state {
+
     padding: 60px 20px;
 
     text-align: center;
 
     color: #6b7280;
+
 }
 
+
 .empty-state i {
+
     font-size: 50px;
 
     margin-bottom: 15px;
 
     color: #9ca3af;
+
 }
 
 
 /* =========================================================
-   RESPONSIVE
+   DARK MODE FIX
 ========================================================= */
+
+body.admin-dark-mode {
+
+    background: #080b14 !important;
+
+    color: #e5e7eb !important;
+
+}
+
+
+body.admin-dark-mode .employee-page {
+
+    background: #080b14 !important;
+
+    color: #e5e7eb !important;
+
+}
+
+
+/* Summary cards */
+
+body.admin-dark-mode .summary-card {
+
+    background:
+        linear-gradient(
+            145deg,
+            #151a2e,
+            #0d1120
+        ) !important;
+
+    color: #e5e7eb !important;
+
+    border:
+        1px solid rgba(139,92,246,0.12) !important;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.30) !important;
+
+}
+
+
+body.admin-dark-mode .summary-card:hover {
+
+    border-color:
+        rgba(139,92,246,0.35) !important;
+
+}
+
+
+body.admin-dark-mode .summary-label {
+
+    color: #94a3b8 !important;
+
+}
+
+
+/* AI card */
+
+body.admin-dark-mode .ai-card {
+
+    background:
+        linear-gradient(
+            145deg,
+            #111525,
+            #0d1120
+        ) !important;
+
+    color: #e5e7eb !important;
+
+    border:
+        1px solid rgba(255,255,255,0.06) !important;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25) !important;
+
+}
+
+
+body.admin-dark-mode .ai-title {
+
+    color: #a78bfa !important;
+
+}
+
+
+/* Employee table card */
+
+body.admin-dark-mode .employee-table-card {
+
+    background:
+        linear-gradient(
+            145deg,
+            #111525,
+            #0d1120
+        ) !important;
+
+    color: #e5e7eb !important;
+
+    border:
+        1px solid rgba(255,255,255,0.06) !important;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25) !important;
+
+}
+
+
+body.admin-dark-mode .employee-table-header {
+
+    background: #111525 !important;
+
+    color: #f8fafc !important;
+
+    border-bottom:
+        1px solid #334155 !important;
+
+}
+
+
+body.admin-dark-mode .employee-table-header h3 {
+
+    color: #f8fafc !important;
+
+}
+
+
+/* Table */
+
+body.admin-dark-mode .employee-table {
+
+    color: #e5e7eb !important;
+
+}
+
+
+body.admin-dark-mode .employee-table thead th {
+
+    background: #080b14 !important;
+
+    color: #f8fafc !important;
+
+    border-color: #334155 !important;
+
+}
+
+
+body.admin-dark-mode .employee-table tbody td {
+
+    background: #111525 !important;
+
+    color: #d1d5db !important;
+
+    border-color: #334155 !important;
+
+}
+
+
+body.admin-dark-mode .employee-table tbody tr:hover td {
+
+    background: #182033 !important;
+
+}
+
+
+/* Employee name */
+
+body.admin-dark-mode .employee-name {
+
+    color: #f8fafc !important;
+
+}
+
+
+body.admin-dark-mode .employee-code {
+
+    color: #94a3b8 !important;
+
+}
+
+
+/* Performance */
+
+body.admin-dark-mode .performance-bar {
+
+    background: #334155 !important;
+
+}
+
+
+/* Muted text */
+
+body.admin-dark-mode .text-muted {
+
+    color: #94a3b8 !important;
+
+}
+
+
+/* Empty state */
+
+body.admin-dark-mode .empty-state {
+
+    color: #94a3b8 !important;
+
+}
+
+
+body.admin-dark-mode .empty-state i {
+
+    color: #64748b !important;
+
+}
+
+
+/* Dark mode table borders */
+
+body.admin-dark-mode .table > :not(caption) > * > * {
+
+    border-color: #334155 !important;
+
+}
+
+
+/* Responsive */
 
 @media (max-width: 768px) {
 
     .employee-page {
+
         padding: 20px 12px;
+
     }
+
 
     .page-header {
+
         padding: 22px;
+
     }
+
 
     .page-header .btn-add-employee {
+
         margin-top: 20px;
+
         width: 100%;
+
     }
 
+}
+/* =========================================================
+   FIX AI CARD EXTRA BLANK SPACE
+========================================================= */
+
+.ai-card {
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+.ai-card .row {
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+.ai-card .col-lg-3,
+.ai-card .col-md-6 {
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+.ai-card .progress {
+    height: 8px !important;
+}
+
+body.admin-dark-mode .ai-card {
+    height: auto !important;
+    min-height: 0 !important;
 }
 
 </style>
@@ -648,19 +1010,22 @@ body {
         <div>
 
             <h1>
+
                 <i class="fa-solid fa-users me-2"></i>
+
                 Employee Management
+
             </h1>
 
             <p>
+
                 Manage employees, monitor performance,
                 and analyze workforce productivity.
+
             </p>
 
         </div>
 
-
-        <!-- RESTORED ADD EMPLOYEE BUTTON -->
 
         <a
             href="add.php"
@@ -676,7 +1041,6 @@ body {
     </div>
 
 </div>
-
 
 
 <!-- =====================================================
@@ -725,7 +1089,6 @@ body {
     </div>
 
 
-
     <!-- TOTAL TASKS -->
 
     <div class="col-xl-3 col-md-6">
@@ -763,7 +1126,6 @@ body {
         </div>
 
     </div>
-
 
 
     <!-- COMPLETED TASKS -->
@@ -805,7 +1167,6 @@ body {
     </div>
 
 
-
     <!-- PERFORMANCE -->
 
     <div class="col-xl-3 col-md-6">
@@ -826,7 +1187,10 @@ body {
 
                 </div>
 
-                <div class="summary-number" style="color:#6610f2;">
+                <div
+                    class="summary-number"
+                    style="color:#6610f2;"
+                >
 
                     <?php echo $avg_performance; ?>%
 
@@ -845,7 +1209,6 @@ body {
     </div>
 
 </div>
-
 
 
 <!-- =====================================================
@@ -897,7 +1260,9 @@ body {
         <div class="col-lg-3 col-md-6">
 
             <small class="text-muted">
+
                 Top Performer
+
             </small>
 
             <h5 class="mt-2 mb-1">
@@ -911,10 +1276,12 @@ body {
             <small class="text-muted">
 
                 <?php
+
                 echo e(
                     $top_performer['department_name']
                     ?: 'Department not assigned'
                 );
+
                 ?>
 
             </small>
@@ -922,13 +1289,14 @@ body {
         </div>
 
 
-
         <!-- PERFORMANCE -->
 
         <div class="col-lg-3 col-md-6">
 
             <small class="text-muted">
+
                 Performance
+
             </small>
 
             <div class="mt-2">
@@ -936,7 +1304,11 @@ body {
                 <strong>
 
                     <?php
-                    echo e($top_performer['performance']);
+
+                    echo e(
+                        $top_performer['performance']
+                    );
+
                     ?>%
 
                 </strong>
@@ -960,13 +1332,14 @@ body {
         </div>
 
 
-
         <!-- TASKS -->
 
         <div class="col-lg-3 col-md-6">
 
             <small class="text-muted">
+
                 Task Summary
+
             </small>
 
             <div class="mt-2">
@@ -974,17 +1347,28 @@ body {
                 <span class="badge bg-success me-1">
 
                     <?php
-                    echo e($top_performer['completed_tasks']);
+
+                    echo e(
+                        $top_performer['completed_tasks']
+                    );
+
                     ?>
+
                     Completed
 
                 </span>
 
+
                 <span class="badge bg-warning text-dark">
 
                     <?php
-                    echo e($top_performer['pending_tasks']);
+
+                    echo e(
+                        $top_performer['pending_tasks']
+                    );
+
                     ?>
+
                     Pending
 
                 </span>
@@ -994,13 +1378,14 @@ body {
         </div>
 
 
-
         <!-- AI DECISION -->
 
         <div class="col-lg-3 col-md-6">
 
             <small class="text-muted">
+
                 AI Decision
+
             </small>
 
             <div class="mt-2">
@@ -1017,6 +1402,7 @@ body {
 
         </div>
 
+
     </div>
 
     <?php } else { ?>
@@ -1032,7 +1418,6 @@ body {
     <?php } ?>
 
 </div>
-
 
 
 <!-- =====================================================
@@ -1069,8 +1454,6 @@ body {
             </div>
 
 
-            <!-- ADD EMPLOYEE AGAIN -->
-
             <a
                 href="add.php"
                 class="btn btn-primary"
@@ -1085,7 +1468,6 @@ body {
         </div>
 
     </div>
-
 
 
     <!-- TABLE -->
@@ -1176,7 +1558,6 @@ body {
                     </td>
 
 
-
                     <!-- ID -->
 
                     <td>
@@ -1190,7 +1571,6 @@ body {
                         </strong>
 
                     </td>
-
 
 
                     <!-- EMPLOYEE -->
@@ -1216,7 +1596,6 @@ body {
                     </td>
 
 
-
                     <!-- DEPARTMENT -->
 
                     <td>
@@ -1233,7 +1612,6 @@ body {
                     </td>
 
 
-
                     <!-- PHONE -->
 
                     <td>
@@ -1245,7 +1623,6 @@ body {
                     </td>
 
 
-
                     <!-- DESIGNATION -->
 
                     <td>
@@ -1255,7 +1632,6 @@ body {
                         ?>
 
                     </td>
-
 
 
                     <!-- TASKS -->
@@ -1288,6 +1664,7 @@ body {
 
                             </span>
 
+
                             <span class="badge bg-warning text-dark">
 
                                 <?php
@@ -1303,16 +1680,13 @@ body {
                     </td>
 
 
-
                     <!-- PERFORMANCE -->
 
                     <td>
 
                         <div class="performance-wrapper">
 
-                            <div
-                                class="performance-text"
-                            >
+                            <div class="performance-text">
 
                                 <?php echo $performance; ?>%
 
@@ -1325,7 +1699,13 @@ body {
                                     style="
                                         width:
                                         <?php
-                                        echo $performance;
+                                        echo min(
+                                            max(
+                                                $performance,
+                                                0
+                                            ),
+                                            100
+                                        );
                                         ?>%;
                                     "
                                 ></div>
@@ -1335,7 +1715,6 @@ body {
                         </div>
 
                     </td>
-
 
 
                     <!-- AI RATING -->
@@ -1375,12 +1754,12 @@ body {
                     </td>
 
 
-
                     <!-- ACTIONS -->
 
                     <td>
 
                         <div class="d-flex flex-wrap gap-1">
+
 
                             <!-- VIEW -->
 
@@ -1431,9 +1810,11 @@ body {
 
                             </a>
 
+
                         </div>
 
                     </td>
+
 
                 </tr>
 
@@ -1456,7 +1837,9 @@ body {
 
                         <i class="fa-solid fa-users-slash d-block"></i>
 
-                        <h5>No Employees Found</h5>
+                        <h5>
+                            No Employees Found
+                        </h5>
 
                         <p>
                             Add your first employee to start
@@ -1486,6 +1869,7 @@ body {
 
     </div>
 
+
 </div>
 
 
@@ -1495,9 +1879,11 @@ body {
 <!-- Bootstrap JS -->
 
 <script
-src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
-</script>
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+></script>
+
 
 </body>
 
 </html>
+
